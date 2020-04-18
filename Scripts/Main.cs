@@ -12,7 +12,7 @@ public class Main : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-systemState
+
     }
 
     public void ChangeSystemState(SystemState newState)
