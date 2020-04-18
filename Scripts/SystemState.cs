@@ -4,13 +4,18 @@ using EventCallback;
 
 public enum SystemStates
 {
-MENU,
-GAME,
-WIN,
-LOSE
+    LOAD,
+    MENU,
+    GAME,
+    WIN,
+    LOSE
 };
 
-public class SystemState : Node
+public class SystemState
 {
-
+    SystemStates currentState;
+    public void SetState(SystemStates state)
+    {
+        currentState = state;
+    }
 }

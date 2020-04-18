@@ -7,9 +7,9 @@ public class InputMove : KinematicBody2D
     //The speed of the player
     int speed = 350;
     //The acceleration of the player
-    int accel = 100;
+    //int accel = 100;
     //The deccelaration of the player
-    int deccel = 100;
+    //int deccel = 100;
 
     //The movement keys are pressed or not
     bool up, down, left, right;
@@ -47,19 +47,33 @@ public class InputMove : KinematicBody2D
         else if (right) inputVelocity.x = 1;
         else inputVelocity.x = 0;
 
+/*
         inputVelocity = inputVelocity.Normalized();
 
         if (inputVelocity != Vector2.Zero)
         {
             velocity += inputVelocity * accel;
+
+            velocity.x = Mathf.Clamp(velocity.x, -speed, speed);
+            velocity.y = Mathf.Clamp(velocity.y, -speed, speed);
         }
         else
         {
-            velocity -= inputVelocity * deccel;
+            if(velocity.Length() > deccel * delta)
+            {
+                velocity -= velocity.Normalized() * deccel * delta;
+            }
+            else
+            {
+                velocity = Vector2.Zero;
+            }  
         }
+*/
+//inputVelocity = inputVelocity.Normalized();
+//velocity.x = Mathf.Lerp(velocity.x, velocity.x * inputVelocity.x * speed, speed * delta);
+//velocity.y = Mathf.Lerp(velocity.y, velocity.y * inputVelocity.y * speed, speed * delta);
+velocity = inputVelocity.Normalized() * speed;
 
-        velocity.x = Mathf.Clamp(velocity.x, -speed, speed);
-        velocity.y = Mathf.Clamp(velocity.y, -speed, speed);
 
         MoveAndSlide(velocity);
     }
