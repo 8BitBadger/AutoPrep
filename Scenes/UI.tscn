@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UIManager.cs" type="Script" id=1]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="UIManager" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="Win" type="Node2D" parent="."]
+
+[node name="Lose" type="Node2D" parent="."]
+
+[node name="Wait" type="Node2D" parent="."]
+
+[node name="Record" type="Button" parent="Wait"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Record"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Run" type="Button" parent="Wait"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Run"
+__meta__ = {
+"_edit_use_anchors_": false
+}

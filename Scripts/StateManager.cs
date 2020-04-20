@@ -4,14 +4,14 @@ using EventCallback;
 
 public abstract class StateManager
 {
-    State currentState;
-    public abstract void Init(State startState)
+    IState currentState;
+    public void Init(IState startState)
     {
         //Set the starting state here
         ChangeState(startState);
     }
 
-    public void ChangeState(State newState)
+    public void ChangeState(IState newState)
     {
         currentState.Exit();
         currentState = newState;
