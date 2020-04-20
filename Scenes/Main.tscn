@@ -1,21 +1,94 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Main.cs" type="Script" id=1]
-[ext_resource path="res://Scripts/GameState.cs" type="Script" id=2]
-[ext_resource path="res://Scripts/SystemState.cs" type="Script" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/InputManager.cs" type="Script" id=5]
 [ext_resource path="res://Scripts/MainCam.cs" type="Script" id=6]
 
+[sub_resource type="CSharpScript" id=1]
+script/source = "using Godot;
+using System;
+
+public class Main : Node2D
+{
+    SystemState systemState;
+    GameState gameState;
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+
+    }
+
+    public void ChangeSystemState(SystemState newState)
+    {
+        systemState = newState;
+    }
+
+    public void ChangeGameState(GameState newState)
+    {
+        gameState = newState;
+    }
+
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //  public override void _Process(float delta)
+    //  {
+    //      
+    //  }
+}
+"
+
+[sub_resource type="CSharpScript" id=2]
+script/source = "using Godot;
+using System;
+using EventCallback;
+
+public enum SystemStates
+{
+    LOAD,
+    MENU,
+    GAME,
+    WIN,
+    LOSE
+};
+
+public class SystemState
+{
+    SystemStates currentState;
+    public void SetState(SystemStates state)
+    {
+        currentState = state;
+    }
+}
+"
+
+[sub_resource type="CSharpScript" id=3]
+script/source = "using Godot;
+using System;
+
+public enum GameStates
+{
+PROGRAM,
+RUN
+};
+
+public class GameState : Node
+{
+    
+}
+"
+
 [node name="Main" type="Node2D"]
 position = Vector2( 1, 0 )
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="SystemState" type="Node" parent="."]
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="GameState" type="Node" parent="."]
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 325, 241 )

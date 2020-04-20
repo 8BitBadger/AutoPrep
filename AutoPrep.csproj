@@ -55,12 +55,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\EventSystem\CameraEvent.cs" />
-    <Compile Include="Scripts\GameState.cs" />
+    <Compile Include="Scripts\State.cs" />
     <Compile Include="Scripts\InputManager.cs" />
     <Compile Include="Scripts\InputMove.cs" />
     <Compile Include="Scripts\Main.cs" />
     <Compile Include="Scripts\MainCam.cs" />
-    <Compile Include="Scripts\SystemState.cs" />
+    <Compile Include="Scripts\gameProgramState.cs" />
+    <Compile Include="Scripts\StateManager.cs" />
     <Compile Include="Scripts\EventSystem\Event.cs" />
     <Compile Include="Scripts\EventSystem\DeathEvent.cs" />
     <Compile Include="Scripts\EventSystem\HitEvent.cs" />
