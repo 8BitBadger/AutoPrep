@@ -1,34 +1,76 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/UIManager.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Program.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Run.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/StopPrograming.cs" type="Script" id=4]
 
 [node name="UI" type="CanvasLayer"]
-
-[node name="UIManager" type="Node" parent="."]
 script = ExtResource( 1 )
 
 [node name="Menu" type="Node2D" parent="."]
 
+[node name="Start" type="Button" parent="Menu"]
+margin_left = 585.677
+margin_top = 325.058
+margin_right = 626.677
+margin_bottom = 345.058
+text = "Start"
+
+[node name="Exit" type="Button" parent="Menu"]
+margin_left = 585.677
+margin_top = 389.497
+margin_right = 620.677
+margin_bottom = 409.497
+text = "Exit"
+
 [node name="HUD" type="Node2D" parent="."]
+visible = false
 
 [node name="Win" type="Node2D" parent="."]
+visible = false
 
 [node name="Lose" type="Node2D" parent="."]
+visible = false
 
 [node name="Wait" type="Node2D" parent="."]
+visible = false
 
-[node name="Record" type="Button" parent="Wait"]
-margin_right = 12.0
-margin_bottom = 20.0
-text = "Record"
+[node name="Program" type="Button" parent="Wait"]
+margin_left = 1159.9
+margin_top = 688.779
+margin_right = 1215.9
+margin_bottom = 708.779
+text = "Program"
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Run" type="Button" parent="Wait"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_left = 1228.63
+margin_top = 690.211
+margin_right = 1264.63
+margin_bottom = 710.211
 text = "Run"
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Programing" type="Node2D" parent="."]
+visible = false
+
+[node name="StopPrograming" type="Button" parent="Programing"]
+margin_left = 1158.47
+margin_top = 693.075
+margin_right = 1274.47
+margin_bottom = 713.075
+text = "Stop Programing"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Run" type="Node2D" parent="."]
+visible = false

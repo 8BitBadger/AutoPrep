@@ -57,6 +57,7 @@
     <Compile Include="Scripts\EventSystem\RecordEvent.cs" />
     <Compile Include="Scripts\EventSystem\RunEvent.cs" />
     <Compile Include="Scripts\EventSystem\StopProgramEvent.cs" />
+    <Compile Include="Scripts\Program.cs" />
     <Compile Include="Scripts\Record.cs" />
     <Compile Include="Scripts\Run.cs" />
     <Compile Include="Scripts\State.cs" />
@@ -64,12 +65,6 @@
     <Compile Include="Scripts\InputMove.cs" />
     <Compile Include="Scripts\Main.cs" />
     <Compile Include="Scripts\MainCam.cs" />
-    <Compile Include="Scripts\States\GameEmptyState.cs" />
-    <Compile Include="Scripts\States\GameProgramState.cs" />
-    <Compile Include="Scripts\States\GameRunState.cs" />
-    <Compile Include="Scripts\States\GameWaitState.cs" />
-    <Compile Include="Scripts\States\SystemHUDState.cs" />
-    <Compile Include="Scripts\States\SystemMenuState.cs" />
     <Compile Include="Scripts\StateManager.cs" />
     <Compile Include="Scripts\EventSystem\CameraEvent.cs" />
     <Compile Include="Scripts\EventSystem\Event.cs" />
@@ -83,7 +78,13 @@
     <Compile Include="Scripts\States\UIProgramingState.cs" />
     <Compile Include="Scripts\States\UIRunState.cs" />
     <Compile Include="Scripts\States\UIWaitState.cs" />
-    <Compile Include="Scripts\States\UIWinState.cs" />
+    <Compile Include="Scripts\States\UIWinState.cs" />    
+    <Compile Include="Scripts\States\GameEmptyState.cs" />
+    <Compile Include="Scripts\States\GameProgramState.cs" />
+    <Compile Include="Scripts\States\GameRunState.cs" />
+    <Compile Include="Scripts\States\GameWaitState.cs" />
+    <Compile Include="Scripts\States\UIHUDState.cs" />
+    <Compile Include="Scripts\States\UIMenuState.cs" />
     <Compile Include="Scripts\StopPrograming.cs" />
     <Compile Include="Scripts\UIManager.cs" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/InputManager.cs" type="Script" id=5]
@@ -40,61 +40,15 @@ public class Main : Node2D
 }
 "
 
-[sub_resource type="CSharpScript" id=2]
-script/source = "using Godot;
-using System;
-using EventCallback;
-
-public enum SystemStates
-{
-    LOAD,
-    MENU,
-    GAME,
-    WIN,
-    LOSE
-};
-
-public class SystemState
-{
-    SystemStates currentState;
-    public void SetState(SystemStates state)
-    {
-        currentState = state;
-    }
-}
-"
-
-[sub_resource type="CSharpScript" id=3]
-script/source = "using Godot;
-using System;
-
-public enum GameStates
-{
-PROGRAM,
-RUN
-};
-
-public class GameState : Node
-{
-    
-}
-"
-
 [node name="Main" type="Node2D"]
 position = Vector2( 1, 0 )
 script = SubResource( 1 )
 
-[node name="SystemState" type="Node" parent="."]
-script = SubResource( 2 )
-
-[node name="GameState" type="Node" parent="."]
-script = SubResource( 3 )
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 325, 241 )
-
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource( 5 )
 
 [node name="MainCam" type="Camera2D" parent="."]
 current = true
