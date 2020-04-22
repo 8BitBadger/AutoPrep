@@ -6,8 +6,8 @@ public class ProgramPressed : Button
 {
     public override void _Pressed()
     {
-        SendUIEvent suiei = new SendUIEvent();
-        suiei.uiState = UIState.PROGRAMMING_HUD;
-        suiei.FireEvent();
+        GetUIEvent guiei = new GetUIEvent();
+        guiei.uiState = UIState.PROGRAMMING_HUD;
+        guiei.FireEvent();
     }
 }

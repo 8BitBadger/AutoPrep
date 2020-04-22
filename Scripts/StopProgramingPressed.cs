@@ -6,8 +6,8 @@ public class StopProgramingPressed : Button
 {
     public override void _Pressed()
     {
-        SendUIEvent suiei = new SendUIEvent();
-        suiei.uiState = UIState.WAIT_HUD;
-        suiei.FireEvent();
+        GetUIEvent guiei = new GetUIEvent();
+        guiei.uiState = UIState.WAIT_HUD;
+        guiei.FireEvent();
     }
 }

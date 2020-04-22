@@ -87,25 +87,16 @@ public class Main : Node2D
         {
             //Change the game state for the game mechanics loop
             gameStateManager.ChangeState(gameWaitState);
-            //Set the ui state to the wait hud state
-            SendUIEvent suiei = new SendUIEvent();
-            suiei.uiState = UIState.WAIT_HUD;
-            suiei.FireEvent();
         }
         else if (guiei.uiState == UIState.PROGRAMMING_HUD)
         {
             //Change the game state for the game mechanics loop
             gameStateManager.ChangeState(gameProgramState);
-            //Set the ui state to the programming hud
-            SendUIEvent suiei = new SendUIEvent();
-            suiei.uiState = UIState.PROGRAMMING_HUD;
-            suiei.FireEvent();
         }
     }
 
     public override void _ExitTree()
     {
-        StartProgramEvent.UnregisterListener(ProgramPressed);
         RunEvent.UnregisterListener(RunPressed);
         GetUIEvent.UnregisterListener(GetUIInput);
     }
