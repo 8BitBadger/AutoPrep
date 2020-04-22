@@ -13,7 +13,7 @@ public class GameProgramState : IState
     //Run when the recording starts up
     public void Init()
     {
-
+        GD.Print("Game Programming State Initialized!");
     }
     //Run in the games loop
     public void Update()
@@ -23,7 +23,7 @@ public class GameProgramState : IState
     //Run when the program is unloaded or closed
     public void Exit()
     {
-
+        GD.Print("Exiting Game Programming State");
     }
 
 }

@@ -3,7 +3,7 @@ using System;
 namespace EventCallback
 {
 
-    public class SendUIEvent : Event<SendUIEvent>
+    public class GetUIEvent : Event<GetUIEvent>
     {
         public UIState uiState;
     }

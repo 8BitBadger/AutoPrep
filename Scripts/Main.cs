@@ -4,63 +4,109 @@ using EventCallback;
 
 public class Main : Node2D
 {
-    //The state manager for the games systems -------------------------------
-    StateManager uiStateManager = new UIManager();
-    //States for the games systems ------------------------------------------
-    IState uiMenuState = new UIMenuState();
-    IState uiHUDState = new UIHUDState();
-    IState uiWinState = new UIWinState();
-    IState uiLoseState = new UILoseState();
-    IState uiWaitState = new UIWaitState();
-    IState uiProgramingState = new UIProgramingState();
-    IState uiRunState = new UIRunState();
     //The state manager for the game processes
-    StateManager gameStateManager;
+    StateManager gameStateManager = new GameStateManager();
     //States for the games recording mechanic -------------------------------
     IState gameEmptyState = new GameEmptyState();
     IState gameWaitState = new GameWaitState();
     IState gameProgramState = new GameProgramState();
     IState gameRunState = new GameRunState();
 
+    //The scenes that need to be pre loaded for the game
+    //The packed scene for the player that will be instanced later
+    PackedScene playerScene = new PackedScene();
+    //The node for the player that will be set to the instanced instance of the players packed scene
+    Node player;
+    //The packed scene for the map that will be instanced later
+    PackedScene mapScene = new PackedScene();
+    //The node for the map that will be set to the instanced instance of the map packed scene
+    Node map;
+    //The packed scene for the map that will be instanced later
+    //PackedScene enemyScene = new PackedScene();
+    //The node for the map that will be set to the instanced instance of the map packed scene
+    //Node enemy;
+    //A list of enemies
+    //List<Node> enemyList = new List<Node>();
+    //The packed scene for the ui that will be instanced later
+    PackedScene uiScene = new PackedScene();
+    //The node for the ui that will be set to the instanced instance of the ui packed scene
+    Node ui;
+    //The packed scene for the camera that will be instanced later
+    PackedScene camerScene = new PackedScene();
+    //The node for the ui that will be set to the instanced instance of the ui packed scene
+    Node camera;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //The events from the UI
+        GetUIEvent.RegisterListener(GetUIInput);
         //Regestiring the events for the game states
-        StartProgramEvent.RegisterListener(ProgramPressed);
         RunEvent.RegisterListener(RunPressed);
+
+        Load();
+        Init();
+    }
+    private void Load()
+    {
+        //Pre load the scenes for the game
+        camerScene = ResourceLoader.Load("res://Scenes/Camera.tscn") as PackedScene;
+        playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
+        mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
+        //enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
+        uiScene = ResourceLoader.Load("res://Scenes/UI.tscn") as PackedScene;
+    }
+
+    private void Init()
+    {
         //Init the ui state manager to the menu state
-        uiStateManager.Init(uiMenuState);
         gameStateManager.Init(gameEmptyState);
+        //The UI of the game
+        ui = uiScene.Instance();
+        AddChild(ui);
+        //At the begining of hte program set the ui state to the menu ui elemenet
+        SendUIEvent suiei = new SendUIEvent();
+        suiei.uiState = UIState.MENU;
+        suiei.FireEvent();
     }
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
+        //Update call for the game state manager so that the states get updated
         gameStateManager.Update();
-        uiStateManager.Update();
-    }
-
-    private void ProgramPressed(StartProgramEvent rei)
-    {
-        gameStateManager.ChangeState(gameProgramState);
-        uiStateManager.ChangeState(uiProgramingState);
-    }
-
-    private void StopProgrammingPressed(StopProgramEvent spei)
-    {
-        gameStateManager.ChangeState(gameWaitState);
-        uiStateManager.ChangeState(uiWaitState);
     }
 
     private void RunPressed(RunEvent rei)
     {
         gameStateManager.ChangeState(gameRunState);
-        uiStateManager.ChangeState(uiRunState);
+    }
+
+    private void GetUIInput(GetUIEvent guiei)
+    {
+        if (guiei.uiState == UIState.WAIT_HUD)
+        {
+            //Change the game state for the game mechanics loop
+            gameStateManager.ChangeState(gameWaitState);
+            //Set the ui state to the wait hud state
+            SendUIEvent suiei = new SendUIEvent();
+            suiei.uiState = UIState.WAIT_HUD;
+            suiei.FireEvent();
+        }
+        else if (guiei.uiState == UIState.PROGRAMMING_HUD)
+        {
+            //Change the game state for the game mechanics loop
+            gameStateManager.ChangeState(gameProgramState);
+            //Set the ui state to the programming hud
+            SendUIEvent suiei = new SendUIEvent();
+            suiei.uiState = UIState.PROGRAMMING_HUD;
+            suiei.FireEvent();
+        }
     }
 
     public override void _ExitTree()
-
     {
         StartProgramEvent.UnregisterListener(ProgramPressed);
         RunEvent.UnregisterListener(RunPressed);
+        GetUIEvent.UnregisterListener(GetUIInput);
     }
 }

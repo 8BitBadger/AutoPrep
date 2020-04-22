@@ -8,7 +8,8 @@ public abstract class StateManager
     public void Init(IState startState)
     {
         //Set the starting state here
-        ChangeState(startState);
+        currentState = startState;
+        currentState.Init();
     }
 
     public void ChangeState(IState newState)

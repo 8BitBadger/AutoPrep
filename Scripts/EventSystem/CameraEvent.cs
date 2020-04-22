@@ -3,23 +3,15 @@ using System;
 
 namespace EventCallback
 {
-    public class CameraEvent : Node
+    public class CameraEvent : Event<CameraEvent>
     {
-        public Node target;
-        // Declare member variables here. Examples:
-        // private int a = 2;
-        // private string b = "text";
-
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-        {
-
-        }
-
-        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-        //  public override void _Process(float delta)
-        //  {
-        //      
-        //  }
+        //The target the camera must track
+        public Node2D target;
+        //If the smoothing or drag margins on the camera track is enabled 
+        public bool smoothing = false, dragMarginHorizontal = false, dragMarginVertical = false;
+        //The smoothing speed
+        public float smoothingSpeed = 0;
+        //The drag margins margins
+        public float drangMarginLeft = .2f, dragMarginRight = .2f, dragMarginTop = .2f, dragMarginBottom = .2f;
     }
 }

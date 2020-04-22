@@ -3,8 +3,8 @@ using System;
 
 namespace EventCallback
 {
-public class RunEvent : Event<RunEvent>
-{
+    public class RunEvent : Event<RunEvent>
+    {
 
-}
+    }
 }

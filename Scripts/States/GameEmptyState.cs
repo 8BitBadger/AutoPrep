@@ -10,7 +10,7 @@ public class GameEmptyState : IState
     //Run when the recording starts up
     public void Init()
     {
-
+        
     }
     //Run in the games loop
     public void Update()
