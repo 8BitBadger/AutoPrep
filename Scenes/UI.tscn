@@ -36,7 +36,6 @@ visible = false
 visible = false
 
 [node name="Wait" type="Node2D" parent="."]
-visible = false
 
 [node name="Program" type="Button" parent="Wait"]
 margin_left = 1159.9
@@ -54,6 +53,7 @@ margin_left = 1228.63
 margin_top = 690.211
 margin_right = 1264.63
 margin_bottom = 710.211
+disabled = true
 text = "Run"
 script = ExtResource( 3 )
 __meta__ = {

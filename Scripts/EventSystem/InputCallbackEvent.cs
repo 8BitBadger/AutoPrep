@@ -8,4 +8,9 @@ namespace EventCallback
         public bool upPressed, downPressed, leftPressed, rightPressed, lmbClickPressed, rmbClickPressed;
         public bool upRelease, downRelease, leftRelease, rightRelease, lmbClickRelease, rmbClickRelease;
     }
+
+        public class MouseInputCallbackEvent : Event<MouseInputCallbackEvent>
+    {
+        public Vector2 mousePos;
+    }
 }

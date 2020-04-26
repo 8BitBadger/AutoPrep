@@ -2,25 +2,31 @@ using System;
 using Godot;
 using EventCallback;
 
-public abstract class StateManager
+public class StateManager : Node
 {
-    IState currentState;
-    public void Init(IState startState)
+    State currentState;
+    public virtual void Init(State startState)
     {
+        GD.Print("Base statemanager run Init");
         //Set the starting state here
         currentState = startState;
         currentState.Init();
     }
 
-    public void ChangeState(IState newState)
+    public void ChangeState(State newState)
     {
         currentState.Exit();
         currentState = newState;
         currentState.Init();
     }
 
-    public void Update()
+    public virtual void Update()
     {
         currentState.Update();
+    }
+
+    public virtual void Exit()
+    {
+        currentState.Exit();
     }
 }

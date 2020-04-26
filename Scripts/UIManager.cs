@@ -36,6 +36,7 @@ public class UIManager : Node
         lose = GetNode<Node2D>("Lose");
 
         SendUIEvent.RegisterListener(ChangeState);
+        SendProgramEvent.RegisterListener(GetProgram);
     }
 
     //Hides all the ui elements that are in the ui scen
@@ -79,9 +80,15 @@ public class UIManager : Node
                 break;
         }
     }
+    private void GetProgram(SendProgramEvent pei)
+    {
+        //If a program has been recorded then the disable button wil become enables, this is to prevent errors treing to run an empty program
+        GetNode<Button>("Wait/Run").Disabled = false;
+    }
 
     public override void _ExitTree()
     {
         SendUIEvent.UnregisterListener(ChangeState);
+        SendProgramEvent.UnregisterListener(GetProgram);
     }
 }

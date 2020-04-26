@@ -1,46 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/InputManager.cs" type="Script" id=5]
-
-[sub_resource type="CSharpScript" id=1]
-script/source = "using Godot;
-using System;
-
-public class Main : Node2D
-{
-    SystemState systemState;
-    GameState gameState;
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = \"text\";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-
-    }
-
-    public void ChangeSystemState(SystemState newState)
-    {
-        systemState = newState;
-    }
-
-    public void ChangeGameState(GameState newState)
-    {
-        gameState = newState;
-    }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
-}
-"
 
 [node name="Main" type="Node2D"]
 position = Vector2( 1, 0 )
-script = SubResource( 1 )
+script = ExtResource( 1 )
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource( 5 )

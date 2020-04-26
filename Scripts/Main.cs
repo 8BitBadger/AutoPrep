@@ -7,12 +7,16 @@ public class Main : Node2D
     //The state manager for the game processes
     StateManager gameStateManager = new GameStateManager();
     //States for the games recording mechanic -------------------------------
-    IState gameEmptyState = new GameEmptyState();
-    IState gameWaitState = new GameWaitState();
-    IState gameProgramState = new GameProgramState();
-    IState gameRunState = new GameRunState();
+    State gameEmptyState = new GameEmptyState();
+    State gameWaitState = new GameWaitState();
+    State gameProgramState = new GameProgramState();
+    State gameRunState = new GameRunState();
 
     //The scenes that need to be pre loaded for the game
+    //The packed scene for the GameStateManagerScene that will be instanced later
+    PackedScene GameStateManagerScene = new PackedScene();
+    //The node for the GameStateManager that will be set to the instanced instance of the GameStateManagerScene packed scene
+    Node gameStateManagerNode;
     //The packed scene for the player that will be instanced later
     PackedScene playerScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene

@@ -65,7 +65,8 @@
     <Compile Include="Scripts\Main.cs" />
     <Compile Include="Scripts\MainCam.cs" />
     <Compile Include="Scripts\StateManager.cs" />
-    <Compile Include="Scripts\EventSystem\RecordEvent.cs" />
+    <Compile Include="Scripts\EventSystem\SendProgramEvent.cs" />
+    <Compile Include="Scripts\EventSystem\GetProgramEvent.cs" />
     <Compile Include="Scripts\EventSystem\RunEvent.cs" />
     <Compile Include="Scripts\EventSystem\CameraEvent.cs" />
     <Compile Include="Scripts\EventSystem\Event.cs" />
