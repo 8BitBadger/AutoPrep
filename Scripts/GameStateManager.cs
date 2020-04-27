@@ -12,10 +12,11 @@ public class GameStateManager : StateManager
     Dictionary<ulong, InputActions> lmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
-    public override void Init(State state)
+
+    //States for the games recording mechanic -------------------------------
+    public override void Init(Node state)
     {
         base.Init(state);
-        GD.Print("GameStateManager running init(IState)");
         SendProgramEvent.RegisterListener(StoreProgram);
         GetProgramEvent.RegisterListener(GetProgram);
     }
@@ -28,12 +29,9 @@ public class GameStateManager : StateManager
         lmbInputTimer = spei.lmbInputTimer;
         rmbInputTimer = spei.rmbInputTimer;
         mousePosTimer = spei.mousePosTimer;
-
-        GD.Print("GameStateManager: StoreProgram - leftInputTimer.Count = " + leftInputTimer.Count);
     }
     private void GetProgram(GetProgramEvent gpei)
     {
-        GD.Print("GameStateManager: GetProgram - leftInputTimer.Count = " + leftInputTimer.Count);
         gpei.leftInputTimer = leftInputTimer;
         gpei.rightInputTimer = rightInputTimer;
         gpei.upInputTimer = upInputTimer;

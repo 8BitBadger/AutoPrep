@@ -27,14 +27,25 @@ public class GameProgramState : State
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
 
+    PackedScene playerScene = new PackedScene();
+    //The node for the player that will be set to the instanced instance of the players packed scene
+    Node player;
 
     //When the timer was started
     ulong timerStarted;
     //Run when the recording starts up
     public override void Init()
-    {
+    {  
+        //Regestrations for the events needed for the scene ===========================================================
         InputCallbackEvent.RegisterListener(GrabInput);
         MouseInputCallbackEvent.RegisterListener(GrabMouseInput);
+        //=============================================================================================================
+
+        //Load the player scene
+        playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
+        player = playerScene.Instance();
+        AddChild(player);
+
         //Set the ui state to the programming hud
         SendUIEvent suiei = new SendUIEvent();
         suiei.uiState = UIState.PROGRAMMING_HUD;

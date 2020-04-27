@@ -17,7 +17,6 @@ public class GameRunState : State
     {
         //We use the event manager to grab the values, we do not call the fire event
         //becuase we dont want to store any new values just get the current ones
-    
         GetProgramEvent gpei = new GetProgramEvent();
         gpei.FireEvent();
         leftInputTimer = gpei.leftInputTimer;
@@ -27,7 +26,7 @@ public class GameRunState : State
         lmbInputTimer = gpei.lmbInputTimer;
         rmbInputTimer = gpei.rmbInputTimer;
         mousePosTimer = gpei.mousePosTimer;
-
+        
         GD.Print("GameRunState - leftInputTimer.Count = " + leftInputTimer.Count);
     }
     //Run in the games loop
