@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using EventCallback;
 
+//States for the games recording mechanic =============================================================================
 public class GameStateManager : StateManager
 {
     Dictionary<ulong, InputActions> leftInputTimer = new Dictionary<ulong, InputActions>();
@@ -13,7 +14,7 @@ public class GameStateManager : StateManager
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
 
-    //States for the games recording mechanic -------------------------------
+    
     public override void Init(Node state)
     {
         base.Init(state);
