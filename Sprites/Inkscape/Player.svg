@@ -14,7 +14,7 @@
    viewBox="0 0 33.866666 33.866668"
    version="1.1"
    id="svg970"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="Player.svg"
    inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/Player.png"
    inkscape:export-xdpi="24"
@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="5.6934182"
-     inkscape:cy="80.86229"
+     inkscape:cx="36.000364"
+     inkscape:cy="44.836869"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -54,7 +54,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -64,16 +64,15 @@
      id="layer1"
      transform="translate(0,-263.13332)">
     <path
-       transform="skewY(-1.1519848e-4)"
        style="opacity:1;fill:#214478;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686;paint-order:markers fill stroke"
-       d="m 12.170835,263.13336 h 5.523174 c 2.052109,0 3.141928,3.96875 3.704168,6.35 0.56224,2.38125 0.826823,6.16501 0.826823,10.58334 0,4.41833 -0.229084,8.56213 -0.826823,11.11247 -0.496093,2.11666 -1.652059,5.82087 -3.704168,5.82087 h -5.523174 c -2.052109,0 -3.066105,-3.43959 -3.7041678,-5.82087 -0.6380628,-2.38128 -0.793751,-6.69484 -0.7937505,-11.1125 6e-7,-4.41764 0.2645843,-7.93745 0.7937505,-10.58331 0.5291662,-2.64586 1.6520588,-6.35 3.7041678,-6.35 z"
+       d="m 14.287502,263.13334 5.523174,-2e-5 c 2.052109,0 3.141928,3.96875 3.704168,6.35 0.56224,2.38125 0.826823,6.16501 0.826823,10.58334 0,4.41833 -0.229084,8.56213 -0.826823,11.11247 C 23.018751,293.29579 21.862785,297 19.810676,297 l -5.523174,2e-5 c -2.052109,0 -3.066105,-3.43959 -3.704167,-5.82087 -0.6380632,-2.38128 -0.7937514,-6.69484 -0.7937509,-11.1125 6e-7,-4.41764 0.2645839,-7.93745 0.7937509,-10.58331 0.529166,-2.64586 1.652058,-6.35 3.704167,-6.35 z"
        id="rect1517"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sszsssszszs" />
     <ellipse
        style="opacity:1;fill:#162d50;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686;paint-order:markers fill stroke"
        id="path1648"
-       cx="15.345834"
+       cx="17.462502"
        cy="280.06665"
        rx="7.9375"
        ry="7.4083333" />
@@ -82,7 +81,7 @@
        id="rect1653"
        width="15.875"
        height="2.6458335"
-       x="7.4083333"
+       x="9.5250006"
        y="278.74371"
        ry="0" />
   </g>

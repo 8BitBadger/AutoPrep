@@ -29,7 +29,6 @@ public class InputManager : Node
         if (@event is InputEventMouseMotion eventMouseMotion)
         {
             MouseInputCallbackEvent micei = new MouseInputCallbackEvent();
-            micei.mousePos = eventMouseMotion.GlobalPosition;
             micei.FireEvent();
         }
 

@@ -27,33 +27,46 @@ public class GameProgramState : State
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
 
+    //The packed scene for the map that will be instanced later
+    PackedScene mapScene = new PackedScene();
+    //The node for the map that will be set to the instanced instance of the map packed scene
+    Node map;
     PackedScene playerScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene
     Node player;
 
     //When the timer was started
-    ulong timerStarted;
+    ulong timerStarted, lastMousePosTimeEntry = 0;
     //Run when the recording starts up
     public override void Init()
-    {  
+    {
         //Regestrations for the events needed for the scene ===========================================================
         InputCallbackEvent.RegisterListener(GrabInput);
         MouseInputCallbackEvent.RegisterListener(GrabMouseInput);
         //=============================================================================================================
-
-        //Load the player scene
+        //Preload the scenes for the state to be used =================================================================
+        //Load the map resource scene and instance it as a child of the GameProgramState node
+        mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
+        map = mapScene.Instance();
+        AddChild(map);
+        //Load the player resource scene and instance it as a child of the GameProgramState node
         playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
         player = playerScene.Instance();
+        ((Node2D)player).Position = new Vector2(64, 64);
         AddChild(player);
-
-        //Set the ui state to the programming hud
+        //=============================================================================================================
+        //Set the ui state to the programming hud =====================================================================
         SendUIEvent suiei = new SendUIEvent();
         suiei.uiState = UIState.PROGRAMMING_HUD;
         suiei.FireEvent();
+        //=============================================================================================================
         //Grab the time the program started recording the time for hte user input
         timerStarted = OS.GetTicksMsec();
 
-        
+//Set up the camera follow for hte player
+        CameraEvent cei = new CameraEvent();
+        cei.target = (Node2D)player;
+        cei.FireEvent();
     }
     //Run in the games loop
     public override void Update()
@@ -98,6 +111,14 @@ public class GameProgramState : State
     {
         //The timestamp is worked out by getting the current tick and subtracting the start of the session tick amount
         ulong timeStamp = OS.GetTicksMsec() - timerStarted;
-        //mousePosTimer.Add(timeStamp, micei.mousePos);
+        //Due to the timestamp being the key for the dictionary we have to make sure there are no duplicate keys or we will get and error
+        //so we check if 10 seconds have passed and if they have only then do we add a new entry into the dictionary then we reset
+        //the lastMousePosTimeEntry to the latest time of entry
+        if (OS.GetTicksMsec() - lastMousePosTimeEntry > 10)
+        {
+            lastMousePosTimeEntry = OS.GetTicksMsec();
+            mousePosTimer.Add(timeStamp, micei.mousePos);
+            GD.Print("GameProgramState - micei.mousepos = " + micei.mousePos);
+        }
     }
 }

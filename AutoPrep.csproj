@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\SimulateMovement.cs" />
     <Compile Include="Scripts\ExitPressed.cs" />
     <Compile Include="Scripts\GameStateManager.cs" />
     <Compile Include="Scripts\ProgramPressed.cs" />

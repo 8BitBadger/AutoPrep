@@ -12,6 +12,21 @@ public class GameRunState : State
     Dictionary<ulong, InputActions> lmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
+
+        //The packed scene for the map that will be instanced later
+    PackedScene mapScene = new PackedScene();
+    //The node for the map that will be set to the instanced instance of the map packed scene
+    Node map;
+    PackedScene droidScene = new PackedScene();
+    //The node for the player that will be set to the instanced instance of the players packed scene
+    Node droid;
+
+     //The packed scene for the map that will be instanced later
+    PackedScene enemyScene = new PackedScene();
+    //The node for the map that will be set to the instanced instance of the map packed scene
+    Node enemy;
+    //A list of enemies
+    List<Node> enemyList = new List<Node>();
     //Run when the state starts up
     public override void Init()
     {
@@ -26,6 +41,13 @@ public class GameRunState : State
         lmbInputTimer = gpei.lmbInputTimer;
         rmbInputTimer = gpei.rmbInputTimer;
         mousePosTimer = gpei.mousePosTimer;
+
+        //Load the player scene
+        droidScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
+        droid = droidScene.Instance();
+        AddChild(droid);
+
+        enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
         
         GD.Print("GameRunState - leftInputTimer.Count = " + leftInputTimer.Count);
     }

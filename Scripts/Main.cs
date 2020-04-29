@@ -77,8 +77,12 @@ public class Main : Node2D
 
     private void Init()
     {
+        //Instance the game state manager and add it as a child to the main scene
         GameStateManagerNode = GameStateManagerScene.Instance();
         AddChild(GameStateManagerNode);
+        //Instance the camera for the main scene and add it to the main scene as a child
+        camera = camerScene.Instance();
+        AddChild(camera);
 
         //States for the games recording mechanic -------------------------------
         gameEmptyState = GameEmptyStateScene.Instance();
