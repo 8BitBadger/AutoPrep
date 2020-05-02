@@ -2,11 +2,13 @@ using Godot;
 using System;
 using EventCallback;
 
-public class InputManager : Node
+public class InputManager : Node2D
 {
     bool upCheck, downCheck, leftCheck, rightCheck;
+    ulong lastMousePosTimeEntry = 0;
+    bool mouseUpdateCalled = false;
 
-    public override void _UnhandledInput(Godot.InputEvent @event)
+    public override void _Input(Godot.InputEvent @event)
     {
         if (@event is InputEventMouseButton || @event is InputEventKey)
         {
@@ -24,13 +26,30 @@ public class InputManager : Node
             if (@event.IsActionPressed("MoveRight")) icei.rightPressed = true;
             if (@event.IsActionReleased("MoveRight")) icei.rightRelease = true;
             icei.FireEvent();
-        }
 
-        if (@event is InputEventMouseMotion eventMouseMotion)
+            if (OS.GetTicksMsec() - lastMousePosTimeEntry >= 10 && !mouseUpdateCalled)
+            {
+                mouseUpdateCalled = true;
+                mouseUpdate();
+                mouseUpdateCalled = false;
+            }
+        }
+        if (@event is InputEventMouseMotion)
+        {
+            //Update the mouse position every .1 of a second
+            if (OS.GetTicksMsec() - lastMousePosTimeEntry >= 10 && !mouseUpdateCalled)
+            {
+                mouseUpdateCalled = true;
+                mouseUpdate();
+                mouseUpdateCalled = false;
+            }
+        }
+    }
+        private void mouseUpdate()
         {
             MouseInputCallbackEvent micei = new MouseInputCallbackEvent();
+            micei.mousePos = GetGlobalMousePosition();
             micei.FireEvent();
+            lastMousePosTimeEntry = OS.GetTicksMsec();
         }
-
     }
-}

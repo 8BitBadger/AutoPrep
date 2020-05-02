@@ -50,6 +50,7 @@ public class GameRunState : State
         enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
         
         GD.Print("GameRunState - leftInputTimer.Count = " + leftInputTimer.Count);
+        GD.Print("GameRunState - mousePosTimer.Count = " + mousePosTimer.Count);
     }
     //Run in the games loop
     public override void Update()

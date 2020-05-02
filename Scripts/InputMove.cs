@@ -42,9 +42,7 @@ public class InputMove : KinematicBody2D
 
     private void GetMousePos(MouseInputCallbackEvent micei)
     {
-        globalMousePos = GetGlobalMousePosition();
-        micei.mousePos = globalMousePos;
-        GD.Print("global mouse pos = " + micei.mousePos);
+        globalMousePos = micei.mousePos;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

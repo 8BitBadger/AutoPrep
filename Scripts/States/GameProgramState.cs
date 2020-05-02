@@ -36,7 +36,7 @@ public class GameProgramState : State
     Node player;
 
     //When the timer was started
-    ulong timerStarted, lastMousePosTimeEntry = 0;
+    ulong timerStarted;
     //Run when the recording starts up
     public override void Init()
     {
@@ -89,7 +89,6 @@ public class GameProgramState : State
         InputCallbackEvent.UnregisterListener(GrabInput);
         MouseInputCallbackEvent.UnregisterListener(GrabMouseInput);
     }
-
     private void GrabInput(InputCallbackEvent icei)
     {
         //The timestamp is worked out by getting the current tick and subtracting the start of the session tick amount
@@ -114,11 +113,6 @@ public class GameProgramState : State
         //Due to the timestamp being the key for the dictionary we have to make sure there are no duplicate keys or we will get and error
         //so we check if 10 seconds have passed and if they have only then do we add a new entry into the dictionary then we reset
         //the lastMousePosTimeEntry to the latest time of entry
-        if (OS.GetTicksMsec() - lastMousePosTimeEntry > 10)
-        {
-            lastMousePosTimeEntry = OS.GetTicksMsec();
             mousePosTimer.Add(timeStamp, micei.mousePos);
-            GD.Print("GameProgramState - micei.mousepos = " + micei.mousePos);
-        }
     }
 }
