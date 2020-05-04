@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EventCallback;
 
 public class GameRunState : State
@@ -13,20 +14,22 @@ public class GameRunState : State
     Dictionary<ulong, InputActions> rmbInputTimer = new Dictionary<ulong, InputActions>();
     Dictionary<ulong, Vector2> mousePosTimer = new Dictionary<ulong, Vector2>();
 
-        //The packed scene for the map that will be instanced later
+    //The packed scene for the map that will be instanced later
     PackedScene mapScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
     Node map;
     PackedScene droidScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene
     Node droid;
-
-     //The packed scene for the map that will be instanced later
-    PackedScene enemyScene = new PackedScene();
+    //The packed scene for the map that will be instanced later
+    //PackedScene enemyScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
-    Node enemy;
+    //Node enemy;
     //A list of enemies
-    List<Node> enemyList = new List<Node>();
+    //List<Node> enemyList = new List<Node>();
+
+    //When the timer was started
+    ulong timerStarted;
     //Run when the state starts up
     public override void Init()
     {
@@ -47,14 +50,26 @@ public class GameRunState : State
         droid = droidScene.Instance();
         AddChild(droid);
 
-        enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
-        
+        //enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
+
         GD.Print("GameRunState - leftInputTimer.Count = " + leftInputTimer.Count);
         GD.Print("GameRunState - mousePosTimer.Count = " + mousePosTimer.Count);
+        //Grab the time the state started after all the initializations have completely run
+        timerStarted = OS.GetTicksMsec();
     }
     //Run in the games loop
     public override void Update()
     {
+        ulong currentTime = OS.GetTicksMsec() - timerStarted;
+
+        if(leftInputTimer.Keys.First() == currentTime)
+        {
+
+        }
+
+        //1. Find the key in the dictionaries
+        //2. Input the dictionary value to the droid movement controller script
+        //3. Remove the dictionary entry
 
     }
     //Run when the program is unloaded or closed

@@ -4,6 +4,8 @@ using EventCallback;
 
 public class InputManager : Node2D
 {
+    InputCallbackEvent icei;
+    MouseInputCallbackEvent micei;
     bool upCheck, downCheck, leftCheck, rightCheck;
     ulong lastMousePosTimeEntry = 0;
     bool mouseUpdateCalled = false;
@@ -12,7 +14,7 @@ public class InputManager : Node2D
     {
         if (@event is InputEventMouseButton || @event is InputEventKey)
         {
-            InputCallbackEvent icei = new InputCallbackEvent();
+            icei = new InputCallbackEvent();
             if (@event.IsActionPressed("LeftClick")) icei.lmbClickPressed = true;
             if (@event.IsActionReleased("LeftClick")) icei.lmbClickRelease = true;
             if (@event.IsActionPressed("RightClick")) icei.rmbClickPressed = true;
@@ -27,7 +29,7 @@ public class InputManager : Node2D
             if (@event.IsActionReleased("MoveRight")) icei.rightRelease = true;
             icei.FireEvent();
 
-            if (OS.GetTicksMsec() - lastMousePosTimeEntry >= 10 && !mouseUpdateCalled)
+            if (!mouseUpdateCalled)
             {
                 mouseUpdateCalled = true;
                 mouseUpdate();
@@ -36,8 +38,8 @@ public class InputManager : Node2D
         }
         if (@event is InputEventMouseMotion)
         {
-            //Update the mouse position every .1 of a second
-            if (OS.GetTicksMsec() - lastMousePosTimeEntry >= 10 && !mouseUpdateCalled)
+            //Update the mouse position only if the mouse update function is not running yet
+            if (!mouseUpdateCalled)
             {
                 mouseUpdateCalled = true;
                 mouseUpdate();
@@ -47,7 +49,9 @@ public class InputManager : Node2D
     }
         private void mouseUpdate()
         {
-            MouseInputCallbackEvent micei = new MouseInputCallbackEvent();
+            micei = new MouseInputCallbackEvent();
+            //If 10 mirco econds have not passed yet then return out of the mouseUpdate method
+            if(OS.GetTicksMsec() - lastMousePosTimeEntry <= 10) return;
             micei.mousePos = GetGlobalMousePosition();
             micei.FireEvent();
             lastMousePosTimeEntry = OS.GetTicksMsec();
