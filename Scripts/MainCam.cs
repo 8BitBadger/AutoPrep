@@ -31,9 +31,4 @@ public class MainCam : Camera2D
         DragMarginLeft = cei.drangMarginLeft;
         DragMarginRight = cei.dragMarginRight;
     }
-
-    public override void _ExitTree()
-    {
-        CameraEvent.UnregisterListener(SetTarget);
-    }
 }

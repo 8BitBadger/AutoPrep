@@ -111,6 +111,11 @@ public class Main : Node2D
     private void RunPressed(RunEvent rei)
     {
         gameStateManager.ChangeState(gameRunState);
+
+                //At the begining of hte program set the ui state to the menu ui elemenet
+        SendUIEvent suiei = new SendUIEvent();
+        suiei.uiState = UIState.RUN_HUD;
+        suiei.FireEvent();
     }
 
     private void GetUIInput(GetUIEvent guiei)
@@ -129,6 +134,7 @@ public class Main : Node2D
 
     public override void _ExitTree()
     {
+        gameStateManager.Exit();
         RunEvent.UnregisterListener(RunPressed);
         GetUIEvent.UnregisterListener(GetUIInput);
     }

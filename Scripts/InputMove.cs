@@ -84,7 +84,11 @@ public class InputMove : KinematicBody2D
         
         velocity = inputVelocity.Normalized() * speed;
         //Look in the directio of the mouses global position
-        LookAt(globalMousePos);
+        Vector2 tempRotation;
+        Vector2 tempNewRotation = globalMousePos.Normalized();
+        tempRotation.x = Mathf.Lerp(Mathf.Cos(Rotation), tempNewRotation.x, .5f);
+        tempRotation.y = Mathf.Lerp(Mathf.Sin(Rotation), tempNewRotation.y, .5f);
+        LookAt(tempRotation * globalMousePos);
         //Move and slide the rigidbaody 2d
         MoveAndSlide(velocity);
     }

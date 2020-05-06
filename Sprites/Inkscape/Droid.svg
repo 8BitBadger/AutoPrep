@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="24"
+   inkscape:export-xdpi="24"
+   inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/Droid.png"
+   sodipodi:docname="Droid.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg970"
+   version="1.1"
+   viewBox="0 0 33.866666 33.866668"
+   height="128"
+   width="128">
+  <defs
+     id="defs964" />
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="1"
+     inkscape:window-y="312"
+     inkscape:window-x="0"
+     inkscape:window-height="719"
+     inkscape:window-width="1366"
+     inkscape:showpageshadow="false"
+     units="px"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="61.329298"
+     inkscape:cx="33.321793"
+     inkscape:zoom="2.8"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base">
+    <inkscape:grid
+       dotted="false"
+       id="grid1515"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata967">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-263.13332)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       sodipodi:nodetypes="sszsssszszs"
+       inkscape:connector-curvature="0"
+       id="rect1517"
+       d="m 14.287502,263.13334 5.523174,-2e-5 c 2.052109,0 3.141928,3.96875 3.704168,6.35 0.56224,2.38125 0.826823,6.16501 0.826823,10.58334 0,4.41833 -0.229084,8.56213 -0.826823,11.11247 C 23.018751,293.29579 21.862785,297 19.810676,297 l -5.523174,2e-5 c -2.052109,0 -3.066105,-3.43959 -3.704167,-5.82087 -0.6380632,-2.38128 -0.7937514,-6.69484 -0.7937509,-11.1125 6e-7,-4.41764 0.2645839,-7.93745 0.7937509,-10.58331 0.529166,-2.64586 1.652058,-6.35 3.704167,-6.35 z"
+       style="opacity:1;fill:#917c6f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686;paint-order:markers fill stroke" />
+    <ellipse
+       ry="7.4083333"
+       rx="7.9375"
+       cy="280.06665"
+       cx="17.462502"
+       id="path1648"
+       style="opacity:1;fill:#6c5d53;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686;paint-order:markers fill stroke" />
+    <rect
+       ry="0"
+       y="278.74371"
+       x="9.5250006"
+       height="2.6458335"
+       width="15.875"
+       id="rect1653"
+       style="opacity:1;fill:#241c1c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686;paint-order:markers fill stroke" />
+  </g>
+</svg>

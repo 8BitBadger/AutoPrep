@@ -45,15 +45,24 @@ public class GameRunState : State
         rmbInputTimer = gpei.rmbInputTimer;
         mousePosTimer = gpei.mousePosTimer;
 
+        //Load the map resource scene and instance it as a child of the GameProgramState node
+        mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
+        map = mapScene.Instance();
+        AddChild(map);
+
         //Load the player scene
-        droidScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
+        droidScene = ResourceLoader.Load("res://Scenes/Droid.tscn") as PackedScene;
         droid = droidScene.Instance();
+        ((Node2D)droid).Position = Vector2.One * 64;
         AddChild(droid);
+
+        //Set up the camera follow for hte player
+        CameraEvent cei = new CameraEvent();
+        cei.target = (Node2D)droid;
+        cei.FireEvent();
 
         //enemyScene = ResourceLoader.Load("res://Scenes/Enemy.tscn") as PackedScene;
 
-        GD.Print("GameRunState - leftInputTimer.Count = " + leftInputTimer.Count);
-        GD.Print("GameRunState - mousePosTimer.Count = " + mousePosTimer.Count);
         //Grab the time the state started after all the initializations have completely run
         timerStarted = OS.GetTicksMsec();
     }
@@ -62,10 +71,64 @@ public class GameRunState : State
     {
         ulong currentTime = OS.GetTicksMsec() - timerStarted;
 
-        if(leftInputTimer.Keys.First() == currentTime)
+
+        if (leftInputTimer.Count != 0 && leftInputTimer.Keys.First() < currentTime + 15 && leftInputTimer.Keys.First() > currentTime - 15)
+        {
+            //Get the value from the dictionaries first entry
+            //Note the first entry in the dictionary might nit be the first entry added as c# dictionaries don't work that way
+            //double check if it works correctly
+            if (leftInputTimer.Values.First() == InputActions.LEFT_PRESSED) ((SimulateMovement)droid).left = true;
+            else if (leftInputTimer.Values.First() == InputActions.LEFT_RELEASED) ((SimulateMovement)droid).left = false;
+
+            //Remove the first entry in the dictionary
+            leftInputTimer.Remove(leftInputTimer.Keys.First());
+
+        }
+        if (rightInputTimer.Count != 0 && rightInputTimer.Keys.First() < currentTime + 15 && rightInputTimer.Keys.First() > currentTime - 15)
+        {
+            //Get the value from the dictionaries first entry
+            if (rightInputTimer.Values.First() == InputActions.RIGHT_PRESSED) ((SimulateMovement)droid).right = true;
+            else if (rightInputTimer.Values.First() == InputActions.RIGHT_RELEASED) ((SimulateMovement)droid).right = false;
+
+            //Remove the first entry in the dictionary
+            rightInputTimer.Remove(rightInputTimer.Keys.First());
+        }
+        if (upInputTimer.Count != 0 && upInputTimer.Keys.First() < currentTime + 15 && upInputTimer.Keys.First() > currentTime - 15)
+        {
+            //Get the value from the dictionaries first entry
+            if (upInputTimer.Values.First() == InputActions.UP_PRESSED) ((SimulateMovement)droid).up = true;
+            else if (upInputTimer.Values.First() == InputActions.UP_RELEASED) ((SimulateMovement)droid).up = false;
+
+            //Remove the first entry in the dictionary
+            upInputTimer.Remove(upInputTimer.Keys.First());
+        }
+        if (downInputTimer.Count != 0 && downInputTimer.Keys.First() < currentTime + 15 && downInputTimer.Keys.First() > currentTime - 15)
+        {
+            //Get the value from the dictionaries first entry
+            if (downInputTimer.Values.First() == InputActions.DOWN_PRESSED) ((SimulateMovement)droid).down = true;
+            else if (downInputTimer.Values.First() == InputActions.DOWN_RELEASED) ((SimulateMovement)droid).down = false;
+
+            //Remove the first entry in the dictionary
+            downInputTimer.Remove(downInputTimer.Keys.First());
+        }
+        /*
+        if (lmbInputTimer.Keys.First() >= currentTime)
+        {
+        }
+        if (rmbInputTimer.Keys.First() >= currentTime)
         {
 
         }
+        */
+        if (mousePosTimer.Count != 0 && mousePosTimer.Keys.First() < currentTime + 15 && mousePosTimer.Keys.First() > currentTime - 15)
+        {
+            //Get the value from the dictionaries first entry
+            ((SimulateMovement)droid).mousePos = mousePosTimer.Values.First();
+
+            //Remove the first entry in the dictionary
+            mousePosTimer.Remove(mousePosTimer.Keys.First());
+        }
+
 
         //1. Find the key in the dictionaries
         //2. Input the dictionary value to the droid movement controller script

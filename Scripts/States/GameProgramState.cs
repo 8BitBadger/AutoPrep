@@ -63,7 +63,7 @@ public class GameProgramState : State
         //Grab the time the program started recording the time for hte user input
         timerStarted = OS.GetTicksMsec();
 
-//Set up the camera follow for hte player
+        //Set up the camera follow for hte player
         CameraEvent cei = new CameraEvent();
         cei.target = (Node2D)player;
         cei.FireEvent();
@@ -75,6 +75,11 @@ public class GameProgramState : State
     //Run when the program is unloaded or closed
     public override void Exit()
     {
+        //Set up the camera follow for hte player
+        CameraEvent cei = new CameraEvent();
+        //cei.target = (Node2D)player.GetParent().GetParent().GetParent();
+        cei.target = GetNode<Node2D>("../../../Main");
+        cei.FireEvent();
         //Call program event and pass along the movement data to the run state
         SendProgramEvent pei = new SendProgramEvent();
         pei.leftInputTimer = leftInputTimer;
@@ -85,7 +90,7 @@ public class GameProgramState : State
         pei.rmbInputTimer = rmbInputTimer;
         pei.mousePosTimer = mousePosTimer;
         pei.FireEvent();
-
+        //Unregister the keyboard and mouse position input methods
         InputCallbackEvent.UnregisterListener(GrabInput);
         MouseInputCallbackEvent.UnregisterListener(GrabMouseInput);
     }
@@ -113,6 +118,6 @@ public class GameProgramState : State
         //Due to the timestamp being the key for the dictionary we have to make sure there are no duplicate keys or we will get and error
         //so we check if 10 seconds have passed and if they have only then do we add a new entry into the dictionary then we reset
         //the lastMousePosTimeEntry to the latest time of entry
-            mousePosTimer.Add(timeStamp, micei.mousePos);
+        mousePosTimer.Add(timeStamp, micei.mousePos);
     }
 }
