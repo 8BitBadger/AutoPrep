@@ -54,11 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Bullet.cs" />
+    <Compile Include="Scripts\Health.cs" />
     <Compile Include="Scripts\SimulateMovement.cs" />
     <Compile Include="Scripts\ExitPressed.cs" />
     <Compile Include="Scripts\GameStateManager.cs" />
     <Compile Include="Scripts\ProgramPressed.cs" />
     <Compile Include="Scripts\Run.cs" />
+    <Compile Include="Scripts\SimulateWeapon.cs" />
     <Compile Include="Scripts\StartPressed.cs" />
     <Compile Include="Scripts\State.cs" />
     <Compile Include="Scripts\InputManager.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Scripts\States\GameWaitState.cs" />
     <Compile Include="Scripts\StopProgramingPressed.cs" />
     <Compile Include="Scripts\UIManager.cs" />
+    <Compile Include="Scripts\Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

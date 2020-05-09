@@ -10,6 +10,7 @@ public class InputMove : KinematicBody2D
     //int accel = 100;
     //The deccelaration of the player
     //int deccel = 100;
+     float turnSpeed = 0.07f;
 
     //The movement keys are pressed or not
     bool up, down, left, right;
@@ -81,14 +82,21 @@ public class InputMove : KinematicBody2D
         //velocity.x = Mathf.Lerp(velocity.x, velocity.x * inputVelocity.x * speed, speed * delta);
         //velocity.y = Mathf.Lerp(velocity.y, velocity.y * inputVelocity.y * speed, speed * delta);
 
-        
-        velocity = inputVelocity.Normalized() * speed;
+
+      
         //Look in the directio of the mouses global position
-        Vector2 tempRotation;
-        Vector2 tempNewRotation = globalMousePos.Normalized();
-        tempRotation.x = Mathf.Lerp(Mathf.Cos(Rotation), tempNewRotation.x, .5f);
-        tempRotation.y = Mathf.Lerp(Mathf.Sin(Rotation), tempNewRotation.y, .5f);
-        LookAt(tempRotation * globalMousePos);
+        float angleToMouse = GetAngleTo(globalMousePos);
+        if(Mathf.Abs(angleToMouse) < turnSpeed)
+        {
+            Rotation += angleToMouse;
+        }
+        else
+        {
+            if(angleToMouse > 0) Rotation += turnSpeed;
+            if(angleToMouse < 0) Rotation -= turnSpeed;
+        }
+
+        velocity = inputVelocity.Normalized() * speed;
         //Move and slide the rigidbaody 2d
         MoveAndSlide(velocity);
     }

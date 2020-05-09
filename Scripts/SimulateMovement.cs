@@ -4,6 +4,7 @@ using System;
 public class SimulateMovement : KinematicBody2D
 {
     int speed = 350;
+    float turnSpeed = 0.07f;
 
     //The movement keys are pressed or not
     public bool up, down, left, right;
@@ -22,10 +23,19 @@ public class SimulateMovement : KinematicBody2D
         else if (right) inputVelocity.x = 1;
         else inputVelocity.x = 0;
 
-        velocity = inputVelocity.Normalized() * speed;
         //Look in the directio of the mouses global position
-        LookAt(mousePos);
+        float angleToMouse = GetAngleTo(mousePos);
+        if (Mathf.Abs(angleToMouse) < turnSpeed)
+        {
+            Rotation += angleToMouse;
+        }
+        else
+        {
+            if (angleToMouse > 0) Rotation += turnSpeed;
+            if (angleToMouse < 0) Rotation -= turnSpeed;
+        }
+        velocity = inputVelocity.Normalized() * speed;
         //Move and slide the rigidbaody 2d
-        MoveAndSlide(velocity);  
+        MoveAndSlide(velocity);
     }
 }

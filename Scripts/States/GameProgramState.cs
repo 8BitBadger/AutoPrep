@@ -31,6 +31,8 @@ public class GameProgramState : State
     PackedScene mapScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
     Node map;
+                //The tilemap to display
+    TileMap displayMap;
     PackedScene playerScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene
     Node player;
@@ -49,6 +51,8 @@ public class GameProgramState : State
         mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
         map = mapScene.Instance();
         AddChild(map);
+displayMap = GetNode<TileMap>("Map/ProgramMap");
+        displayMap.Visible = true;
         //Load the player resource scene and instance it as a child of the GameProgramState node
         playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
         player = playerScene.Instance();
@@ -90,6 +94,8 @@ public class GameProgramState : State
         pei.rmbInputTimer = rmbInputTimer;
         pei.mousePosTimer = mousePosTimer;
         pei.FireEvent();
+        //Hide the programing map
+        displayMap.Visible = false;
         //Unregister the keyboard and mouse position input methods
         InputCallbackEvent.UnregisterListener(GrabInput);
         MouseInputCallbackEvent.UnregisterListener(GrabMouseInput);

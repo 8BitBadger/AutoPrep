@@ -52,7 +52,7 @@ public class InputManager : Node2D
             micei = new MouseInputCallbackEvent();
             //If 10 mirco econds have not passed yet then return out of the mouseUpdate method
             //if(OS.GetTicksMsec() - lastMousePosTimeEntry <= 10) return;
-            if(OS.GetTicksMsec() - lastMousePosTimeEntry <= 100) return;
+            if(OS.GetTicksMsec() - lastMousePosTimeEntry <= 20) return;
             micei.mousePos = GetGlobalMousePosition();
             micei.FireEvent();
             lastMousePosTimeEntry = OS.GetTicksMsec();

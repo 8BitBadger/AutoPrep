@@ -3,7 +3,9 @@
 [ext_resource path="res://Sprites/TurretBase.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/MultiGun.png" type="Texture" id=2]
 
-[node name="MultiGunTurret" type="Node2D"]
+[node name="MultiGunTurret" type="Node2D" groups=[
+"Enemies",
+]]
 __meta__ = {
 "_edit_group_": true
 }

@@ -18,6 +18,8 @@ public class GameRunState : State
     PackedScene mapScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
     Node map;
+    //The tilemap to display
+    TileMap displayMap;
     PackedScene droidScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene
     Node droid;
@@ -49,6 +51,8 @@ public class GameRunState : State
         mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
         map = mapScene.Instance();
         AddChild(map);
+        displayMap = GetNode<TileMap>("Map/RealMap");
+        displayMap.Visible = true;
 
         //Load the player scene
         droidScene = ResourceLoader.Load("res://Scenes/Droid.tscn") as PackedScene;
@@ -71,56 +75,55 @@ public class GameRunState : State
     {
         ulong currentTime = OS.GetTicksMsec() - timerStarted;
 
-
-        if (leftInputTimer.Count != 0 && leftInputTimer.Keys.First() < currentTime + 15 && leftInputTimer.Keys.First() > currentTime - 15)
+        if (leftInputTimer.Count != 0 && leftInputTimer.Keys.First() <= currentTime + 15 && leftInputTimer.Keys.First() >= currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             //Note the first entry in the dictionary might nit be the first entry added as c# dictionaries don't work that way
             //double check if it works correctly
             if (leftInputTimer.Values.First() == InputActions.LEFT_PRESSED) ((SimulateMovement)droid).left = true;
             else if (leftInputTimer.Values.First() == InputActions.LEFT_RELEASED) ((SimulateMovement)droid).left = false;
-
             //Remove the first entry in the dictionary
             leftInputTimer.Remove(leftInputTimer.Keys.First());
 
         }
-        if (rightInputTimer.Count != 0 && rightInputTimer.Keys.First() < currentTime + 15 && rightInputTimer.Keys.First() > currentTime - 15)
+        if (rightInputTimer.Count != 0 && rightInputTimer.Keys.First() <= currentTime + 15 && rightInputTimer.Keys.First() >= currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             if (rightInputTimer.Values.First() == InputActions.RIGHT_PRESSED) ((SimulateMovement)droid).right = true;
             else if (rightInputTimer.Values.First() == InputActions.RIGHT_RELEASED) ((SimulateMovement)droid).right = false;
-
             //Remove the first entry in the dictionary
             rightInputTimer.Remove(rightInputTimer.Keys.First());
         }
-        if (upInputTimer.Count != 0 && upInputTimer.Keys.First() < currentTime + 15 && upInputTimer.Keys.First() > currentTime - 15)
+        if (upInputTimer.Count != 0 && upInputTimer.Keys.First() <= currentTime + 15 && upInputTimer.Keys.First() >=currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             if (upInputTimer.Values.First() == InputActions.UP_PRESSED) ((SimulateMovement)droid).up = true;
             else if (upInputTimer.Values.First() == InputActions.UP_RELEASED) ((SimulateMovement)droid).up = false;
-
             //Remove the first entry in the dictionary
             upInputTimer.Remove(upInputTimer.Keys.First());
         }
-        if (downInputTimer.Count != 0 && downInputTimer.Keys.First() < currentTime + 15 && downInputTimer.Keys.First() > currentTime - 15)
+        if (downInputTimer.Count != 0 && downInputTimer.Keys.First() <= currentTime + 15 && downInputTimer.Keys.First() >= currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             if (downInputTimer.Values.First() == InputActions.DOWN_PRESSED) ((SimulateMovement)droid).down = true;
             else if (downInputTimer.Values.First() == InputActions.DOWN_RELEASED) ((SimulateMovement)droid).down = false;
-
             //Remove the first entry in the dictionary
             downInputTimer.Remove(downInputTimer.Keys.First());
         }
-        /*
-        if (lmbInputTimer.Keys.First() >= currentTime)
+        
+        if (lmbInputTimer.Count != 0 && lmbInputTimer.Keys.First() <= currentTime + 15 && lmbInputTimer.Keys.First() >= currentTime - 15)
         {
+            if(lmbInputTimer.Values.First() == InputActions.LEFT_CLICK_PRESSED) ((SimulateWeapon)droid.GetChild(2)).FireBullet();
+            //Remove the first entry in the dictionary
+            lmbInputTimer.Remove(lmbInputTimer.Keys.First());
         }
+        /*
         if (rmbInputTimer.Keys.First() >= currentTime)
         {
 
         }
         */
-        if (mousePosTimer.Count != 0 && mousePosTimer.Keys.First() < currentTime + 15 && mousePosTimer.Keys.First() > currentTime - 15)
+        if (mousePosTimer.Count != 0 && mousePosTimer.Keys.First() <= currentTime + 15 && mousePosTimer.Keys.First() >= currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             ((SimulateMovement)droid).mousePos = mousePosTimer.Values.First();
@@ -138,5 +141,6 @@ public class GameRunState : State
     //Run when the program is unloaded or closed
     public override void Exit()
     {
+        displayMap.Visible = false;
     }
 }
