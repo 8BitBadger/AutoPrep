@@ -27,9 +27,7 @@ public class Laser : Node2D
             Vector2 hitPos = (Vector2)hits["position"];
             laserBeam.SetPointPosition(1, hitPos);
             BeamHitParticles.Show();
-            BeamHitParticles.Position = hitPos;
-            //GD.Print("hitPos = " + hitPos);
-            
+            BeamHitParticles.Position = hitPos;            
         }
         else
         {
