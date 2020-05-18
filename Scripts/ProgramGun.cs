@@ -2,7 +2,7 @@ using Godot;
 using System;
 using EventCallback;
 
-public class Weapon : Node2D
+public class ProgramGun : Node2D
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -15,7 +15,6 @@ public class Weapon : Node2D
         InputCallbackEvent.RegisterListener(GetMouseButtonInput);
         bulletScene = ResourceLoader.Load("res://Scenes/BulletProgram.tscn") as PackedScene;
     }
-
     private void GetMouseButtonInput(InputCallbackEvent icei)
     {
         if (icei.lmbClickPressed)

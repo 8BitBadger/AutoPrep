@@ -2,7 +2,7 @@ using Godot;
 using System;
 using EventCallback;
 
-public class SimulateWeapon : Node2D
+public class Gun : Node2D
 {
     PackedScene bulletScene = new PackedScene();
     Node bullet;
@@ -11,7 +11,7 @@ public class SimulateWeapon : Node2D
         bulletScene = ResourceLoader.Load("res://Scenes/Bullet.tscn") as PackedScene;
     }
 
-     public void FireBullet()
+     public void Fire()
     {
             //Instance bullet, set the rotation and start position
             bullet = bulletScene.Instance();

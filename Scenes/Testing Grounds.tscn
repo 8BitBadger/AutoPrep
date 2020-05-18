@@ -1,17 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Droid.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/LazerBeam.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Enemies/LaserTurret.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Droid" parent="." instance=ExtResource( 2 )]
-position = Vector2( 768.779, 376.163 )
+position = Vector2( 176.985, 109.466 )
 
-[node name="LazerBeam" type="Sprite" parent="Droid"]
-position = Vector2( -434.749, 20.6268 )
-texture = ExtResource( 3 )
-
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 151.563, 379.336 )
+[node name="LaserTurret" parent="." instance=ExtResource( 3 )]
+position = Vector2( 387.902, 227.589 )

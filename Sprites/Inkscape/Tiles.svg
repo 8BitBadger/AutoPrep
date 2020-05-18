@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="71.116267"
-     inkscape:cy="143.39661"
+     inkscape:zoom="11.2"
+     inkscape:cx="4.4825318"
+     inkscape:cy="78.144684"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -380,18 +380,18 @@
     <path
        id="path886"
        style="fill:#4d4d4d;stroke-width:20.0001;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
-       d="m 9.5,685.51965 7,-3 8,1 -1,11 -7,4 -7,-3 -2,-4 z"
-       sodipodi:nodetypes="cccccccc" />
+       d="m 7,683.51965 4.25,1.25 -1.25,-4.25 4.75,2.75 2.25,-2.75 1.5,2.25 2.5,-1.25 1.5,1.75 2.5,0.25 -0.75,2.75 1.75,3.25 -2.25,2.25 1.25,3.75 h -3.25 l 0.25,3 -3.75,-1 -2.25,3 -1.25,-2.75 -3.75,0.75 0.25,-2.25 -3.25,2.25 1,-4 -3,1 2,-3 -3,-1 3,-1.5 -3,-2.5 4,-0.5 z"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccc" />
     <path
-       sodipodi:nodetypes="cccccccc"
-       d="m 12,687.51965 5,-4 6,1 -1,9 -6,3 -4,-2 -1,-4 z"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccc"
+       d="m 9,685.51965 4.25,1 -1.25,-3 3.75,1 1.25,-2 1.5,1.25 2.5,-1.25 0.5,1.75 2.5,0.25 -1.25,2.25 1.25,1.75 -1.75,2.75 0.75,3.25 -2.5,-0.25 -0.5,2.25 -2.5,-0.75 -1.5,1.75 -1,-1.5 -2,0.5 v -1.5 l -2,-0.5 0.75,-1 -1.75,-1 1.25,-1 -2.25,-1 2.25,-0.75 -1.25,-1.25 1.75,-0.25 z"
        style="fill:#333333;stroke-width:20.0001;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
        id="path892" />
     <path
        id="path894"
        style="fill:#1a1a1a;stroke-width:20.0001;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
-       d="m 13,688.51965 4,-3 h 5 l -1,7 -4,3 -4,-2 -1,-3 z"
-       sodipodi:nodetypes="cccccccc" />
+       d="m 12,687.51965 2,0.25 v -2.25 l 2,0.75 1,-1.75 1.25,1 1.75,-1 0.75,1 H 22 l -0.25,1.75 1.25,1.25 -1.75,2.25 0.75,2.75 -2,-0.25 -1,2.25 -1,-0.75 -2,1.75 c 0.133009,0.0665 0,-1.5 0,-1.5 l -2,0.5 v -1.5 l -2,0.5 0.75,-1.75 -0.75,-0.25 0.25,-1.25 -1.25,-0.75 1.25,-0.5 -0.25,-0.5 0.75,-0.5 z"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccc" />
     <g
        aria-label="?"
        id="text868"
@@ -459,7 +459,7 @@
          style="fill:#193966;fill-opacity:1" />
     </g>
     <g
-       transform="matrix(1.4840451,0,0,1.4840451,-86.194484,-235.61119)"
+       transform="matrix(1.4840451,0,0,1.4840451,-86.194484,-267.61119)"
        style="font-style:normal;font-weight:normal;font-size:8px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#193966;fill-opacity:1;stroke:none"
        id="g1051"
        aria-label="?">

@@ -113,7 +113,8 @@ public class GameRunState : State
         
         if (lmbInputTimer.Count != 0 && lmbInputTimer.Keys.First() <= currentTime + 15 && lmbInputTimer.Keys.First() >= currentTime - 15)
         {
-            if(lmbInputTimer.Values.First() == InputActions.LEFT_CLICK_PRESSED) ((SimulateWeapon)droid.GetChild(2)).FireBullet();
+            //I dont like usign the GetChild method, if the position of the child node weapon is changed the code will break with no real error
+            if(lmbInputTimer.Values.First() == InputActions.LEFT_CLICK_PRESSED) ((Gun)droid.GetChild(2)).Fire();
             //Remove the first entry in the dictionary
             lmbInputTimer.Remove(lmbInputTimer.Keys.First());
         }
