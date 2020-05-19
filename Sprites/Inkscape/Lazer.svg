@@ -8,51 +8,71 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="Lazer.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 32 32"
+   width="32"
    height="32"
-   width="32">
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Lazer.svg">
   <defs
      id="defs2">
     <linearGradient
-       inkscape:collect="always"
-       id="linearGradient1532">
+       id="linearGradient1532"
+       inkscape:collect="always">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1"
+         id="stop1528"
          offset="0"
-         id="stop1528" />
+         style="stop-color:#ffffff;stop-opacity:1" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0"
+         id="stop1530"
          offset="1"
-         id="stop1530" />
+         style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1519"
+       inkscape:collect="always">
+      <stop
+         id="stop1515"
+         offset="0"
+         style="stop-color:#00ff00;stop-opacity:1" />
+      <stop
+         id="stop1517"
+         offset="1"
+         style="stop-color:#2b0000;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1513"
+       inkscape:collect="always">
+      <stop
+         id="stop1509"
+         offset="0"
+         style="stop-color:#00ff00;stop-opacity:1" />
+      <stop
+         id="stop1511"
+         offset="1"
+         style="stop-color:#2b0000;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
-       id="linearGradient1519">
-      <stop
-         style="stop-color:#00ff00;stop-opacity:1"
-         offset="0"
-         id="stop1515" />
-      <stop
-         style="stop-color:#2b0000;stop-opacity:0;"
-         offset="1"
-         id="stop1517" />
-    </linearGradient>
+       xlink:href="#linearGradient1532"
+       id="linearGradient1416"
+       x1="16"
+       y1="14.999996"
+       x2="16"
+       y2="5.6666632"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.21428572,0,12.785715)" />
     <linearGradient
        inkscape:collect="always"
-       id="linearGradient1513">
-      <stop
-         style="stop-color:#00ff00;stop-opacity:1"
-         offset="0"
-         id="stop1509" />
-      <stop
-         style="stop-color:#2b0000;stop-opacity:0;"
-         offset="1"
-         id="stop1511" />
-    </linearGradient>
+       xlink:href="#linearGradient1532"
+       id="linearGradient1420"
+       gradientUnits="userSpaceOnUse"
+       x1="16"
+       y1="15.000006"
+       x2="16"
+       y2="5.6666727"
+       gradientTransform="matrix(1,0,0,0.21428572,-32,-19.214287)" />
     <linearGradient
        gradientTransform="matrix(1,0,0,0.21428572,0,12.785715)"
        gradientUnits="userSpaceOnUse"
@@ -60,8 +80,8 @@
        x2="16"
        y1="10.33333"
        x1="16"
-       id="linearGradient1416"
-       xlink:href="#linearGradient1532"
+       id="linearGradient1416-3"
+       xlink:href="#linearGradient1513"
        inkscape:collect="always" />
     <linearGradient
        gradientTransform="matrix(1,0,0,0.21428572,-32,-19.214287)"
@@ -70,55 +90,36 @@
        y1="10.333339"
        x1="16"
        gradientUnits="userSpaceOnUse"
-       id="linearGradient1420"
-       xlink:href="#linearGradient1532"
-       inkscape:collect="always" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1513"
-       id="linearGradient1416-3"
-       x1="16"
-       y1="10.33333"
-       x2="16"
-       y2="0.99999666"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.21428572,0,12.785715)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1519"
        id="linearGradient1420-2"
-       gradientUnits="userSpaceOnUse"
-       x1="16"
-       y1="10.333339"
-       x2="16"
-       y2="1"
-       gradientTransform="matrix(1,0,0,0.21428572,-32,-19.214287)" />
+       xlink:href="#linearGradient1519"
+       inkscape:collect="always" />
   </defs>
   <sodipodi:namedview
-     inkscape:window-maximized="1"
-     inkscape:window-y="312"
-     inkscape:window-x="0"
-     inkscape:window-height="719"
-     inkscape:window-width="1366"
-     inkscape:showpageshadow="false"
-     units="px"
-     showgrid="true"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="px"
-     inkscape:cy="19.506031"
-     inkscape:cx="14.724336"
-     inkscape:zoom="27.12827"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     inkscape:pagecheckerboard="true"
+     id="base"
      pagecolor="#ffffff"
-     id="base">
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="54.25654"
+     inkscape:cx="15.531364"
+     inkscape:cy="16.470924"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     units="px"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     inkscape:window-x="0"
+     inkscape:window-y="312"
+     inkscape:window-maximized="1">
     <inkscape:grid
-       dotted="false"
+       type="xygrid"
        id="grid1402"
-       type="xygrid" />
+       dotted="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -128,21 +129,59 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     style="display:inline"
-     id="layer1"
+     inkscape:label="Play"
      inkscape:groupmode="layer"
-     inkscape:label="Play">
+     id="layer1"
+     style="display:inline">
+    <rect
+       y="14"
+       x="15"
+       height="2"
+       width="2"
+       id="rect1408"
+       style="fill:url(#linearGradient1416);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
+       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeam.png"
+       inkscape:export-xdpi="95.999992"
+       inkscape:export-ydpi="95.999992" />
+    <rect
+       style="fill:url(#linearGradient1420);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="rect1418"
+       width="2"
+       height="2"
+       x="-17"
+       y="-18"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeam.png"
+       inkscape:export-xdpi="95.999992"
+       inkscape:export-ydpi="95.999992" />
     <rect
        inkscape:export-ydpi="95.999992"
        inkscape:export-xdpi="95.999992"
        inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeam.png"
-       style="fill:url(#linearGradient1416);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
-       id="rect1408"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="rect1428"
+       width="2"
+       height="2"
+       x="15"
+       y="15" />
+  </g>
+  <g
+     sodipodi:insensitive="true"
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="program"
+     style="display:none;opacity:1">
+    <rect
+       inkscape:export-ydpi="95.999992"
+       inkscape:export-xdpi="95.999992"
+       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeamProgram.png"
+       style="display:inline;opacity:0.99;fill:url(#linearGradient1416-3);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="rect1408-9"
        width="2"
        height="3"
        x="15"
@@ -150,41 +189,13 @@
     <rect
        inkscape:export-ydpi="95.999992"
        inkscape:export-xdpi="95.999992"
-       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeam.png"
+       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeamProgram.png"
        transform="scale(-1)"
        y="-19"
        x="-17"
        height="3"
        width="2"
-       id="rect1418"
-       style="fill:url(#linearGradient1420);fill-opacity:1.0;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke" />
-  </g>
-  <g
-     style="display:none;opacity:1"
-     inkscape:label="program"
-     id="layer3"
-     inkscape:groupmode="layer"
-     sodipodi:insensitive="true">
-    <rect
-       y="13"
-       x="15"
-       height="3"
-       width="2"
-       id="rect1408-9"
-       style="display:inline;opacity:0.99;fill:url(#linearGradient1416-3);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
-       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeamProgram.png"
-       inkscape:export-xdpi="95.999992"
-       inkscape:export-ydpi="95.999992" />
-    <rect
-       style="display:inline;opacity:0.99;fill:url(#linearGradient1420-2);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
        id="rect1418-1"
-       width="2"
-       height="3"
-       x="-17"
-       y="-19"
-       transform="scale(-1)"
-       inkscape:export-filename="/home/bitbadger/GameProjects/AutoPrep/Sprites/LazerBeamProgram.png"
-       inkscape:export-xdpi="95.999992"
-       inkscape:export-ydpi="95.999992" />
+       style="display:inline;opacity:0.99;fill:url(#linearGradient1420-2);fill-opacity:1;stroke-width:10.6066;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke" />
   </g>
 </svg>
