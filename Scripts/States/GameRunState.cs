@@ -24,11 +24,15 @@ public class GameRunState : State
     //The node for the player that will be set to the instanced instance of the players packed scene
     Node droid;
     //The packed scene for the map that will be instanced later
-    //PackedScene enemyScene = new PackedScene();
+    PackedScene gunTurretScene = new PackedScene();
+    PackedScene laserTurretScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
-    //Node enemy;
+    Node gunTurret;
+    Node laserTurret;
     //A list of enemies
-    //List<Node> enemyList = new List<Node>();
+    List<Node> turretList = new List<Node>();
+    PackedScene goalScene = new PackedScene();
+    Node goal;
 
     //When the timer was started
     ulong timerStarted;
@@ -51,15 +55,18 @@ public class GameRunState : State
         mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
         map = mapScene.Instance();
         AddChild(map);
+        TileMap RealMap = GetNode<TileMap>("Map/ProgramMap");
+        RealMap.QueueFree();
         displayMap = GetNode<TileMap>("Map/RealMap");
         displayMap.Visible = true;
-
-        //Load the player scene
         droidScene = ResourceLoader.Load("res://Scenes/Droid.tscn") as PackedScene;
-        droid = droidScene.Instance();
-        ((Node2D)droid).Position = Vector2.One * 64;
-        AddChild(droid);
+        gunTurretScene = ResourceLoader.Load("res://Scenes/Enemies/GunTurret.tscn") as PackedScene;
+        laserTurretScene = ResourceLoader.Load("res://Scenes/Enemies/LaserTurret.tscn") as PackedScene;
+        goalScene = ResourceLoader.Load("res://Scenes/Goal.tscn") as PackedScene;
 
+
+        //Instance player and gun towers
+        BuildMap();
         //Set up the camera follow for hte player
         CameraEvent cei = new CameraEvent();
         cei.target = (Node2D)droid;
@@ -94,7 +101,7 @@ public class GameRunState : State
             //Remove the first entry in the dictionary
             rightInputTimer.Remove(rightInputTimer.Keys.First());
         }
-        if (upInputTimer.Count != 0 && upInputTimer.Keys.First() <= currentTime + 15 && upInputTimer.Keys.First() >=currentTime - 15)
+        if (upInputTimer.Count != 0 && upInputTimer.Keys.First() <= currentTime + 15 && upInputTimer.Keys.First() >= currentTime - 15)
         {
             //Get the value from the dictionaries first entry
             if (upInputTimer.Values.First() == InputActions.UP_PRESSED) ((SimulateMovement)droid).up = true;
@@ -110,11 +117,11 @@ public class GameRunState : State
             //Remove the first entry in the dictionary
             downInputTimer.Remove(downInputTimer.Keys.First());
         }
-        
+
         if (lmbInputTimer.Count != 0 && lmbInputTimer.Keys.First() <= currentTime + 15 && lmbInputTimer.Keys.First() >= currentTime - 15)
         {
             //I dont like usign the GetChild method, if the position of the child node weapon is changed the code will break with no real error
-            if(lmbInputTimer.Values.First() == InputActions.LEFT_CLICK_PRESSED) ((Gun)droid.GetChild(2)).Fire();
+            if (lmbInputTimer.Values.First() == InputActions.LEFT_CLICK_PRESSED) ((Gun)(droid.GetChild(2)).GetChild(0)).Fire();
             //Remove the first entry in the dictionary
             lmbInputTimer.Remove(lmbInputTimer.Keys.First());
         }
@@ -139,6 +146,64 @@ public class GameRunState : State
         //3. Remove the dictionary entry
 
     }
+    private void BuildMap()
+    {
+        for (int y = -21; y < 64; y++)
+        {
+            for (int x = 0; x < 73; x++)
+            {
+
+                //Spawn Payer and spawn gate
+                if (displayMap.GetCell(x, y) == 6)
+                {
+                    //Load the player scene
+                    displayMap.SetCell(x, y, 0);
+                    droid = droidScene.Instance();
+                    ((Node2D)droid).Position = new Vector2(x * 32 + 16, y * 32 + 16);
+                    droid.Name = "Droid";
+                    AddChild(droid);
+                }
+                //Used for instancing turrets
+                if (displayMap.GetCell(x, y) == 4)
+                {
+                    RandomNumberGenerator rng = new RandomNumberGenerator();
+                    rng.Randomize();
+                    //Select a random turret to spawn
+                    int spawnGunTurret = rng.RandiRange(0, 1);
+                    if (spawnGunTurret == 1)
+                    {
+                        //Load the player scene
+                        displayMap.SetCell(x, y, 8);
+                        gunTurret = gunTurretScene.Instance();
+                        ((Node2D)gunTurret).Position = new Vector2(x * 32 + 16, y * 32 + 16);
+                        gunTurret.Name = "GunTurret";
+                        AddChild(gunTurret);
+                    }
+                    else
+                    {
+                        //Load the player scene
+                        displayMap.SetCell(x, y, 8);
+                        laserTurret = laserTurretScene.Instance();
+                        ((Node2D)laserTurret).Position = new Vector2(x * 32 + 16, y * 32 + 16);
+                        laserTurret.Name = "LaserTurret";
+                        AddChild(laserTurret);
+                    }
+
+                }
+                //Spawn the goal for the map
+                if (displayMap.GetCell(x, y) == 7)
+                {
+                    displayMap.SetCell(x, y, 0);
+                    goal = goalScene.Instance();
+                    ((Node2D)goal).Position = new Vector2(x * 32 + 16, y * 32 + 16);
+                    goal.Name = "Goal";
+                    AddChild(goal);
+                }
+
+            }
+        }
+    }
+
     //Run when the program is unloaded or closed
     public override void Exit()
     {

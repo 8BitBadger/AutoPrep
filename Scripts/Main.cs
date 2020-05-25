@@ -53,6 +53,8 @@ public class Main : Node2D
         GetUIEvent.RegisterListener(GetUIInput);
         //Regestiring the events for the game states
         RunEvent.RegisterListener(RunPressed);
+        WinEvent.RegisterListener(WinGame);
+        LoseEvent.RegisterListener(LoseGame);
 
         Load();
         Init();
@@ -112,9 +114,25 @@ public class Main : Node2D
     {
         gameStateManager.ChangeState(gameRunState);
 
-                //At the begining of hte program set the ui state to the menu ui elemenet
+        //At the begining of hte program set the ui state to the menu ui elemenet
         SendUIEvent suiei = new SendUIEvent();
         suiei.uiState = UIState.RUN_HUD;
+        suiei.FireEvent();
+    }
+
+    private void WinGame(WinEvent wei)
+    {
+        gameStateManager.ChangeState(gameEmptyState);
+        SendUIEvent suiei = new SendUIEvent();
+        suiei.uiState = UIState.WIN;
+        suiei.FireEvent();
+
+    }
+    private void LoseGame(LoseEvent lei)
+    {
+        gameStateManager.ChangeState(gameEmptyState);
+        SendUIEvent suiei = new SendUIEvent();
+        suiei.uiState = UIState.LOSE;
         suiei.FireEvent();
     }
 

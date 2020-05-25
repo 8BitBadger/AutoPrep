@@ -81,7 +81,7 @@ public class LineOfSight : Area2D
                 Node2D col = (Node2D)hits["collider"];
                 if (col.IsInGroup("Player"))
                 {
-                    if(lookingAtTarget) ((Gun)GetNode<Node2D>("../Gun/BulletSpawn")).Fire();
+                    if(lookingAtTarget) ((Gun)GetNode<Node2D>("../Gun/Nozzle")).Fire();
                     lookAtTarget = true;
                 }
                 else

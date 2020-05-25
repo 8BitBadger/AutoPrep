@@ -18,30 +18,36 @@ public class Laser : Node2D
     }
     public override void _PhysicsProcess(float delta)
     {
-        //GD.Print("Parent Name = " + GetParent().Name);
-        //GD.Print("Parent Rotation = " + ((Node2D)GetParent()).GlobalPosition);
-        //GD.Print("this Name = " + this.Name);
-        //GD.Print("this Rotation = " + GlobalPosition);
-
         Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
         //Get the raycast hits and store them in a dictionary
-        //Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, (((Node2D)GetParent()).GlobalPosition + ((Node2D)GetParent()).Transform.x * maxDistance));
-        Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, GlobalPosition +Transform.x * maxDistance);
+        
+        //This works, why?!?!???!?!?!?!!
+        //Why does it not work on the child object, is it becuse the child object is not centered
+        Godot.Collections.Dictionary hits = worldState.IntersectRay(((Node2D)GetParent()).GlobalPosition, ((Node2D)GetParent()).GlobalPosition + ((Node2D)GetParent()).Transform.x * maxDistance, new Godot.Collections.Array { GetNode<KinematicBody2D>("../../../LaserTurret") });
         //If there are no hits then we return out of the function
         if (hits.Count > 0)
         {
-            GD.Print("Hit Detected");
             Vector2 hitPos = (Vector2)hits["position"];
-            laserBeam.SetPointPosition(1, new Vector2(hitPos.x, 0));
+            //Offset the start position of hte laser so that it looks like it is originating at the nozzle of the barrel
+            laserBeam.SetPointPosition(0, new Vector2(16, 0));
+            laserBeam.SetPointPosition(1, new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x , 0));
             BeamHitParticles.Emitting = true;
-            BeamHitParticles.Position = new Vector2(hitPos.x, 0);            
+            BeamHitParticles.Position = new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x, 0);
+            //Fire of the hit event
+            HitEvent hei = new HitEvent();
+            hei.target = (Node2D)hits["collider"];
+            hei.attacker = (Node2D)GetParent();
+            hei.damage = 100;
+            hei.FireEvent();
         }
         else
         {
             BeamHitParticles.Emitting = false;
-           //laserBeam.SetPointPosition(1, new Vector2(maxDistance, 0));
-            laserBeam.SetPointPosition(1, GlobalPosition +Transform.x * maxDistance);
-
+            //Works do not delete!!!!!!!!!!!!!!!
+            //========================================
+            laserBeam.SetPointPosition(0, new Vector2(16, 0));
+            laserBeam.SetPointPosition(1, Position + Transform.x * maxDistance);
+            //========================================
         }
     }
     public void Fire()

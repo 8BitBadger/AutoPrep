@@ -16,6 +16,7 @@ public class Gun : Node2D
             //Instance bullet, set the rotation and start position
             bullet = bulletScene.Instance();
             this.GetParent().AddChild(bullet);
+
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

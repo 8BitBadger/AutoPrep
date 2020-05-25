@@ -31,7 +31,7 @@ public class GameProgramState : State
     PackedScene mapScene = new PackedScene();
     //The node for the map that will be set to the instanced instance of the map packed scene
     Node map;
-                //The tilemap to display
+    //The tilemap to display
     TileMap displayMap;
     PackedScene playerScene = new PackedScene();
     //The node for the player that will be set to the instanced instance of the players packed scene
@@ -51,13 +51,11 @@ public class GameProgramState : State
         mapScene = ResourceLoader.Load("res://Scenes/Map.tscn") as PackedScene;
         map = mapScene.Instance();
         AddChild(map);
-displayMap = GetNode<TileMap>("Map/ProgramMap");
+        TileMap RealMap = GetNode<TileMap>("Map/RealMap");
+        RealMap.QueueFree();
+        displayMap = GetNode<TileMap>("Map/ProgramMap");
         displayMap.Visible = true;
-        //Load the player resource scene and instance it as a child of the GameProgramState node
         playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
-        player = playerScene.Instance();
-        ((Node2D)player).Position = new Vector2(64, 64);
-        AddChild(player);
         //=============================================================================================================
         //Set the ui state to the programming hud =====================================================================
         SendUIEvent suiei = new SendUIEvent();
@@ -66,6 +64,8 @@ displayMap = GetNode<TileMap>("Map/ProgramMap");
         //=============================================================================================================
         //Grab the time the program started recording the time for hte user input
         timerStarted = OS.GetTicksMsec();
+
+        BuildMap();
 
         //Set up the camera follow for hte player
         CameraEvent cei = new CameraEvent();
@@ -125,5 +125,24 @@ displayMap = GetNode<TileMap>("Map/ProgramMap");
         //so we check if 10 seconds have passed and if they have only then do we add a new entry into the dictionary then we reset
         //the lastMousePosTimeEntry to the latest time of entry
         mousePosTimer.Add(timeStamp, micei.mousePos);
+    }
+
+    private void BuildMap()
+    {
+        for (int y = -21; y < 64; y++)
+        {
+            for (int x = 0; x < 73; x++)
+            {
+                //Spawn Payer and spawn gate
+                if (displayMap.GetCell(x, y) == 6)
+                { //Load the player scene
+                    displayMap.SetCell(x, y, 2);
+                    player = playerScene.Instance();
+                    ((Node2D)player).Position = new Vector2(x * 32 + 16, y * 32 + 16);
+                    player.Name = "Player";
+                    AddChild(player);
+                }
+            }
+        }
     }
 }

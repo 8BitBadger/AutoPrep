@@ -21,12 +21,23 @@ boot_splash/image="res://Sprites/LoadScreen.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
+[color]
+
+cplor=false
+
 [display]
 
 window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 window/size/always_on_top=true
+
+[global]
+
+cplor=false
+color=false
+Color=false
+"Bg Color"=false
 
 [input]
 
@@ -67,4 +78,5 @@ RightClick={
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

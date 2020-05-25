@@ -36,6 +36,7 @@ public class LaserLineOfSight : Area2D
     {
         //Look in the direction of the targets global position
         float angleToTarget = GetNode<Node2D>("../Gun").GetAngleTo(((Node2D)target).Position);
+        
         if (Mathf.Abs(angleToTarget) < turnSpeed)
         {
             GetNode<Node2D>("../Gun").Rotation += angleToTarget;
@@ -45,6 +46,7 @@ public class LaserLineOfSight : Area2D
             if (angleToTarget > 0) GetNode<Node2D>("../Gun").Rotation += turnSpeed;
             if (angleToTarget < 0) GetNode<Node2D>("../Gun").Rotation -= turnSpeed;
         }
+        
         //If the gun is looking at the player se set it to true to enable our gun to fire
         if (angleToTarget == 0)
         {
@@ -81,7 +83,7 @@ public class LaserLineOfSight : Area2D
                 Node2D col = (Node2D)hits["collider"];
                 if (col.IsInGroup("Player"))
                 {
-                    if(lookingAtTarget) ((Laser)GetNode<Node2D>("../Gun/Laser")).Fire();
+                    if (lookingAtTarget) ((Laser)GetNode<Node2D>("../Gun/Laser")).Fire();
                     lookAtTarget = true;
                 }
                 else

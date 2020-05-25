@@ -6,6 +6,7 @@ public class Bullet : Area2D
 {
     //The speed of the bullet
     int speed = 700;
+    Vector2 velocity;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -16,22 +17,26 @@ public class Bullet : Area2D
     }
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 velocity = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation)) * speed;
+        velocity = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation)) * speed;
         Position += velocity * delta;
     }
     public void BodyEntered(Node body)
     {
-        GD.Print("Bullet hit ", body.Name);
         //Check if it hit a map element first
         if (body.IsInGroup("Map"))
         {
-            GD.Print("Collided with map");
+            MapUpdateEvent muei = new MapUpdateEvent();
+            //Add one more step of velocity to the colliders position so that we make sure the bullet is inside the tile before we
+            //return the bullets position to the map for refferencing the tile that was hit
+            velocity = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation)) * speed / 2;
+            muei.CollisionPos = (Position += velocity * .01f);
+            muei.FireEvent();
             QueueFree();
         }
         //If the collider was not a wall or in the same group as the object that fired it call the hit event
-        else if (body.GetGroups() != GetParent().GetGroups())
+        //else if (body.GetGroups() != GetParent().GetGroups())
+        else if (body != GetParent().GetParent())
         {
-            GD.Print("Collider was different to the bullet intializer");
             //Fire of the hit event
             HitEvent hei = new HitEvent();
             hei.target = (Node2D)body;
