@@ -54,7 +54,7 @@ public class Main : Node2D
         //Regestiring the events for the game states
         RunEvent.RegisterListener(RunPressed);
         WinEvent.RegisterListener(WinGame);
-        LoseEvent.RegisterListener(LoseGame);
+        DeathEvent.RegisterListener(LoseGame);
 
         Load();
         Init();
@@ -128,12 +128,15 @@ public class Main : Node2D
         suiei.FireEvent();
 
     }
-    private void LoseGame(LoseEvent lei)
+    private void LoseGame(DeathEvent dei)
     {
-        gameStateManager.ChangeState(gameEmptyState);
-        SendUIEvent suiei = new SendUIEvent();
-        suiei.uiState = UIState.LOSE;
-        suiei.FireEvent();
+        if (dei.target.IsInGroup("Player"))
+        {
+            gameStateManager.ChangeState(gameEmptyState);
+            SendUIEvent suiei = new SendUIEvent();
+            suiei.uiState = UIState.LOSE;
+            suiei.FireEvent();
+        }
     }
 
     private void GetUIInput(GetUIEvent guiei)

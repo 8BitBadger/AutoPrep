@@ -4,6 +4,7 @@ using EventCallback;
 
 public class Laser : Node2D
 {
+    bool canFire = false;
     int maxDistance = 1000;
     Line2D laserBeam;
     Particles2D BeamHitParticles;
@@ -18,9 +19,10 @@ public class Laser : Node2D
     }
     public override void _PhysicsProcess(float delta)
     {
+        if (!canFire) return;
         Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
         //Get the raycast hits and store them in a dictionary
-        
+
         //This works, why?!?!???!?!?!?!!
         //Why does it not work on the child object, is it becuse the child object is not centered
         Godot.Collections.Dictionary hits = worldState.IntersectRay(((Node2D)GetParent()).GlobalPosition, ((Node2D)GetParent()).GlobalPosition + ((Node2D)GetParent()).Transform.x * maxDistance, new Godot.Collections.Array { GetNode<KinematicBody2D>("../../../LaserTurret") });
@@ -30,7 +32,7 @@ public class Laser : Node2D
             Vector2 hitPos = (Vector2)hits["position"];
             //Offset the start position of hte laser so that it looks like it is originating at the nozzle of the barrel
             laserBeam.SetPointPosition(0, new Vector2(16, 0));
-            laserBeam.SetPointPosition(1, new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x , 0));
+            laserBeam.SetPointPosition(1, new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x, 0));
             BeamHitParticles.Emitting = true;
             BeamHitParticles.Position = new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x, 0);
             //Fire of the hit event
@@ -52,7 +54,7 @@ public class Laser : Node2D
     }
     public void Fire()
     {
-
+        canFire = true;
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

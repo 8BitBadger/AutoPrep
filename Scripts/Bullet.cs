@@ -12,8 +12,8 @@ public class Bullet : Area2D
     public override void _Ready()
     {
         SetAsToplevel(true);
-        Position = ((Node2D)GetParent()).GlobalPosition;
-        Rotation = ((Node2D)GetParent()).Rotation;
+        Position = ((Node2D)GetParent().GetParent()).GlobalPosition;
+        Rotation = ((Node2D)GetParent().GetParent()).Rotation;
     }
     public override void _PhysicsProcess(float delta)
     {

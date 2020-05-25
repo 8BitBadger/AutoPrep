@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Enemies/GunTurret.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Droid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Enemies/LaserTurret.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Droid" parent="." instance=ExtResource( 2 )]
-position = Vector2( 562.694, 483.394 )
+[node name="Map" parent="." instance=ExtResource( 4 )]
 
-[node name="GunTurret" parent="." instance=ExtResource( 1 )]
-position = Vector2( 678.15, 333.914 )
+[node name="Droid" parent="." instance=ExtResource( 2 )]
+position = Vector2( 319.522, 136.203 )
 
 [node name="LaserTurret" parent="." instance=ExtResource( 3 )]
-position = Vector2( 881.911, 542.686 )
+position = Vector2( 392.393, 445.168 )
+
+[node name="GunTurret" parent="." instance=ExtResource( 1 )]
+position = Vector2( 470, 189 )

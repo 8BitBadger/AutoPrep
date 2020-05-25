@@ -11,7 +11,7 @@ public class LaserLineOfSight : Area2D
     //The interval that the raytracing should be fired at
     float lastTrackedTime = 0;
     //Turn speed of the turret
-    float turnSpeed = 0.07f;
+    float turnSpeed = 0.05f;
 
     public override void _PhysicsProcess(float delta)
     {
