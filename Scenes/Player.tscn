@@ -21,6 +21,4 @@ shape = SubResource( 1 )
 
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2( 7, 0 )
-
-[node name="Nozzle" type="Node2D" parent="Gun"]
 script = ExtResource( 3 )

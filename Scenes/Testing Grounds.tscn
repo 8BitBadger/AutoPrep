@@ -16,4 +16,16 @@ position = Vector2( 319.522, 136.203 )
 position = Vector2( 392.393, 445.168 )
 
 [node name="GunTurret" parent="." instance=ExtResource( 1 )]
-position = Vector2( 470, 189 )
+position = Vector2( 458, 100 )
+
+[node name="GunTurret2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 458, 100 )
+
+[node name="GunTurret3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 442, 161 )
+
+[node name="GunTurret4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 420, 210 )
+
+[node name="GunTurret5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 385, 260 )
