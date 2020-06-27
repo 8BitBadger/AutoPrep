@@ -22,6 +22,7 @@ public class Bullet : Area2D
     }
     public void BodyEntered(Node body)
     {
+        GD.Print("body.Name = " + body.Name);
         //Check if it hit a map element first
         if (body.IsInGroup("Map"))
         {
@@ -29,18 +30,18 @@ public class Bullet : Area2D
             //Add one more step of velocity to the colliders position so that we make sure the bullet is inside the tile before we
             //return the bullets position to the map for refferencing the tile that was hit
             velocity = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation)) * speed / 2;
-            muei.CollisionPos = (Position += velocity * .01f);
+            muei.CollisionPos = Position;
             muei.FireEvent();
             QueueFree();
         }
         //If the collider was not a wall or in the same group as the object that fired it call the hit event
-        //else if (body.GetGroups() != GetParent().GetGroups())
         else if (body != GetParent().GetParent())
         {
+            GD.Print("Bullet parent = " + GetParent().GetParent().Name);
             //Fire of the hit event
             HitEvent hei = new HitEvent();
             hei.target = (Node2D)body;
-            hei.attacker = (Node2D)GetParent();
+            hei.attacker = (Node2D)GetParent().GetParent();
             hei.damage = 100;
             hei.FireEvent();
             QueueFree();

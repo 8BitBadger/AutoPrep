@@ -21,10 +21,24 @@ public class ProgramMap : TileMap
     //  }
     private void UpdateMap(MapUpdateEvent muei)
     {
-        if (GetCell((int)muei.CollisionPos.x / 32, (int)muei.CollisionPos.y / 32) == 4)
+        //I we hit a wall we just return out of the tile check
+        if(GetCell((int)muei.CollisionPos.x / 32, (int)muei.CollisionPos.y / 32) == 3) return;
+        //Convert the position from the collision passed in to intiger to use in the tile map
+        int tileX = (int)muei.CollisionPos.x / 32;
+        int tileY = (int)muei.CollisionPos.y / 32;
+
+//Run through all the surrounding tiles in the collision 
+        for (int x = tileX -1; x < tileX + 1; x++)
         {
-            SetCell((int)muei.CollisionPos.x / 32, (int)muei.CollisionPos.y / 32, 5);
+            for (int y = tileY -1; y < tileY + 1; y++)
+            {
+                if (GetCell(x, y) == 4)
+                {
+                    SetCell(x, y, 5);
+                }
+            }
         }
+
     }
 
     public override void _ExitTree()

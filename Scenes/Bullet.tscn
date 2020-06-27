@@ -4,9 +4,8 @@
 [ext_resource path="res://Scripts/Bullet.cs" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-custom_solver_bias = 0.5
-radius = 4.2
-height = 2.4
+radius = 3.0
+height = 4.0
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource( 2 )

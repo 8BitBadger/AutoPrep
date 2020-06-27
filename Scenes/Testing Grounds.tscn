@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Enemies/GunTurret.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Enemies/LaserTurret.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Droid.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Enemies/LaserTurret.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
@@ -10,22 +9,7 @@
 [node name="Map" parent="." instance=ExtResource( 4 )]
 
 [node name="Droid" parent="." instance=ExtResource( 2 )]
-position = Vector2( 238.522, 260.203 )
+position = Vector2( 99.8649, 124.465 )
 
-[node name="LaserTurret" parent="." instance=ExtResource( 3 )]
-position = Vector2( 264.393, 51.168 )
-
-[node name="GunTurret" parent="." instance=ExtResource( 1 )]
-position = Vector2( 458, 100 )
-
-[node name="GunTurret2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 463, 50 )
-
-[node name="GunTurret3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 442, 161 )
-
-[node name="GunTurret4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 420, 210 )
-
-[node name="GunTurret5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 385, 260 )
+[node name="LaserTurret" parent="." instance=ExtResource( 1 )]
+position = Vector2( 452.508, 107.467 )

@@ -13,6 +13,7 @@ public class Laser : Node2D
     PackedScene bulletScene = new PackedScene();
     public override void _Ready()
     {
+        SetAsToplevel(true);
         laserBeam = GetNode<Line2D>("LaserBeam");
         BeamHitParticles = GetNode<Particles2D>("BeamHitParticles");
         hitBox = GetNode<KinematicBody2D>("../../../LaserTurret");
@@ -31,10 +32,11 @@ public class Laser : Node2D
         {
             Vector2 hitPos = (Vector2)hits["position"];
             //Offset the start position of hte laser so that it looks like it is originating at the nozzle of the barrel
-            laserBeam.SetPointPosition(0, new Vector2(16, 0));
-            laserBeam.SetPointPosition(1, new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x, 0));
+            laserBeam.SetPointPosition(0, ((Node2D)GetParent().GetParent()).Position);
+            laserBeam.SetPointPosition(1, hitPos);
+
             BeamHitParticles.Emitting = true;
-            BeamHitParticles.Position = new Vector2(((Node2D)GetParent()).GlobalPosition.x - hitPos.x, 0);
+            BeamHitParticles.Position = hitPos;
             //Fire of the hit event
             HitEvent hei = new HitEvent();
             hei.target = (Node2D)hits["collider"];
