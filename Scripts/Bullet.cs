@@ -12,6 +12,7 @@ public class Bullet : Area2D
     public override void _Ready()
     {
         SetAsToplevel(true);
+        GD.Print("Bullet parent = " + ((Node2D)GetParent()).Name);
         Position = ((Node2D)GetParent()).GlobalPosition;
         Rotation = ((Node2D)GetParent()).Rotation;
     }
@@ -22,7 +23,7 @@ public class Bullet : Area2D
     }
     public void BodyEntered(Node body)
     {
-        GD.Print("body.Name = " + body.Name);
+        //GD.Print("body.Name = " + body.Name);
         //Check if it hit a map element first
         if (body.IsInGroup("Map"))
         {

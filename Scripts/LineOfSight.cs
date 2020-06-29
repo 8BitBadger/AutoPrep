@@ -80,7 +80,6 @@ public class LineOfSight : Area2D
             if (angleToTarget < 0) GetNode<Node2D>("../Gun").Rotation -= turnSpeed;
         }
         //If the gun is looking at the player se set it to true to enable our gun to fire
-        GD.Print(GetParent().Name + "'s angle is = " + Mathf.Rad2Deg(angleToTarget));
         //If the target is within 1 to -1 degrees of the turret is fires the bullet
         if (Mathf.Rad2Deg(angleToTarget) <= 1 && Mathf.Rad2Deg(angleToTarget) >= -1)
         {

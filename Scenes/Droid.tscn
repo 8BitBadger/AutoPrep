@@ -21,6 +21,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Gun" type="Node2D" parent="."]
+
+[node name="Nozzle" type="Node2D" parent="Gun"]
 script = ExtResource( 3 )
 
 [node name="Health" type="Node" parent="."]
