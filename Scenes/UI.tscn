@@ -1,35 +1,81 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/UIManager.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/ProgramPressed.cs" type="Script" id=2]
 [ext_resource path="res://Scripts/Run.cs" type="Script" id=3]
-[ext_resource path="res://Scripts/StopProgramingPressed.cs" type="Script" id=4]
+[ext_resource path="res://Font/OGAFGJF1.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scripts/StartPressed.cs" type="Script" id=5]
 [ext_resource path="res://Scripts/ExitPressed.cs" type="Script" id=6]
 [ext_resource path="res://Sprites/WinScreen.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/LoseScreen.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Title.png" type="Texture" id=9]
+[ext_resource path="res://Font/UIFontPreset.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scripts/StopProgramingPressed.cs" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+outline_color = Color( 0.145098, 0.564706, 0.0627451, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Menu" type="Node2D" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Start" type="Button" parent="Menu"]
-margin_left = 585.677
-margin_top = 325.058
-margin_right = 626.677
-margin_bottom = 345.058
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_top = 133.0
+margin_right = 1280.0
+margin_bottom = 533.0
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+margin_top = 537.0
+margin_right = 1280.0
+margin_bottom = 583.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 46.0
+alignment = 1
+
+[node name="Start" type="Button" parent="Menu/VBoxContainer/HBoxContainer"]
+margin_left = 524.0
+margin_right = 656.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
+shortcut_in_tooltip = false
 text = "Start"
+flat = true
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Exit" type="Button" parent="Menu"]
-margin_left = 585.677
-margin_top = 389.497
-margin_right = 620.677
-margin_bottom = 409.497
+[node name="Exit" type="Button" parent="Menu/VBoxContainer/HBoxContainer"]
+margin_left = 660.0
+margin_right = 756.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
 text = "Exit"
+flat = true
 script = ExtResource( 6 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Menu"]
+margin_top = 587.0
+margin_right = 1280.0
+margin_bottom = 587.0
 
 [node name="Win" type="Node2D" parent="."]
 visible = false
@@ -38,6 +84,17 @@ visible = false
 texture = ExtResource( 7 )
 centered = false
 
+[node name="Exit2" type="Button" parent="Win"]
+margin_left = 660.0
+margin_top = 537.0
+margin_right = 756.0
+margin_bottom = 583.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
+text = "Exit"
+flat = true
+script = ExtResource( 6 )
+
 [node name="Lose" type="Node2D" parent="."]
 visible = false
 
@@ -45,42 +102,75 @@ visible = false
 texture = ExtResource( 8 )
 centered = false
 
-[node name="Wait" type="Node2D" parent="."]
+[node name="Exit2" type="Button" parent="Lose"]
+margin_left = 660.0
+margin_top = 537.0
+margin_right = 756.0
+margin_bottom = 583.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
+text = "Exit"
+flat = true
+script = ExtResource( 6 )
+
+[node name="Wait" type="VBoxContainer" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Wait"]
+margin_top = 199.0
+margin_right = 1280.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.0941176, 0.717647, 0.00392157, 1 )
+text = "\"Ok were in the system, looks like we can only get access to the automated defence droids from here...\", \"We can use them to take out the turrets and grab the data package from the mainframe.\""
+align = 1
+autowrap = true
 
 [node name="Program" type="Button" parent="Wait"]
-margin_left = 1159.9
-margin_top = 688.779
-margin_right = 1215.9
-margin_bottom = 708.779
-text = "Program"
+margin_top = 398.0
+margin_right = 1280.0
+margin_bottom = 444.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
+text = "Program Droid Actions"
+flat = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Run" type="Button" parent="Wait"]
-margin_left = 1228.63
-margin_top = 690.211
-margin_right = 1264.63
-margin_bottom = 710.211
+margin_top = 474.0
+margin_right = 1280.0
+margin_bottom = 520.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color_disabled = Color( 0.3725, 0.5, 0.35, 1 )
+custom_colors/font_color = Color( 0.188235, 0.8, 0.0784314, 1 )
 disabled = true
-text = "Run"
+text = "Activate Droid and run program"
+flat = true
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Programming" type="Node2D" parent="."]
-visible = false
 
 [node name="StopPrograming" type="Button" parent="Programming"]
-margin_left = 1158.47
-margin_top = 693.075
-margin_right = 1274.47
-margin_bottom = 713.075
+margin_left = 1007.8
+margin_top = 682.103
+margin_right = 1275.8
+margin_bottom = 716.103
+custom_fonts/font = SubResource( 1 )
 text = "Stop Programing"
-script = ExtResource( 4 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

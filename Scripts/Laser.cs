@@ -8,6 +8,7 @@ public class Laser : Node2D
     int maxDistance = 1000;
     Line2D laserBeam;
     Particles2D BeamHitParticles;
+    Node2D parentNode;
     KinematicBody2D hitBox;
 
     PackedScene bulletScene = new PackedScene();
@@ -17,6 +18,7 @@ public class Laser : Node2D
         laserBeam = GetNode<Line2D>("LaserBeam");
         BeamHitParticles = GetNode<Particles2D>("BeamHitParticles");
         hitBox = GetNode<KinematicBody2D>("../../../LaserTurret");
+        parentNode = ((Node2D)GetParent());
     }
     public override void _PhysicsProcess(float delta)
     {
@@ -26,7 +28,7 @@ public class Laser : Node2D
 
         //This works, why?!?!???!?!?!?!!
         //Why does it not work on the child object, is it becuse the child object is not centered
-        Godot.Collections.Dictionary hits = worldState.IntersectRay(((Node2D)GetParent()).GlobalPosition, ((Node2D)GetParent()).GlobalPosition + ((Node2D)GetParent()).Transform.x * maxDistance, new Godot.Collections.Array { GetNode<KinematicBody2D>("../../../LaserTurret") });
+        Godot.Collections.Dictionary hits = worldState.IntersectRay(parentNode.GlobalPosition, parentNode.GlobalPosition + parentNode.Transform.x * maxDistance, new Godot.Collections.Array { hitBox });
         //If there are no hits then we return out of the function
         if (hits.Count > 0)
         {

@@ -15,8 +15,8 @@ public enum UIState
 public class UIManager : Node
 {
     //The references to the different ui screens
-    Node2D menu;
-    Node2D wait;
+    VBoxContainer menu;
+    VBoxContainer wait;
     Node2D programming;
     Node2D run;
     Node2D win;
@@ -28,8 +28,8 @@ public class UIManager : Node
     public override void _Ready()
     {
         //Referencing all the displays in the UI node for later use
-        menu = GetNode<Node2D>("Menu");
-        wait = GetNode<Node2D>("Wait");
+        menu = GetNode<VBoxContainer>("Menu");
+        wait = GetNode<VBoxContainer>("Wait");
         programming = GetNode<Node2D>("Programming");
         run = GetNode<Node2D>("Run");
         win = GetNode<Node2D>("Win");
